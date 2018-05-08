@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_travel" model="ir.ui.view">
+		<field name="name">Travel</field>
+		<field name="model">travel.order</field>
+		<field name="arch" type="xml">
+			<form string="Travel">
+				<header>
+					<button type="object" name="send_email" string="Send by Email" class="oe_highlight" />
+					<button type="object" name="print" string="Print" class="oe_highlight" />
+					<button type="object" name="confirm" string="Confirm Order"/>
+					<button type="object" name="cancel" string="Cancel"/>
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group name="group_top">
+						<group name="group_left">
+							<h1>New</h1>
+						</group>
+					</group>
+					<group name="group_bottom">
+						<group name="group_left">
+							<field name="departure" attrs="{'invisible': [('state','!=','order')]}"/>
+							<field name="destination" attrs="{'invisible': [('state','!=','order')]}"/>
+							<field name="seat_number" attrs="{'invisible': [('state','!=','order')]}"/>
+						</group>
+						<group name="group_right">
+							<field name="departure_date" attrs="{'invisible': [('state','!=','order')]}"/>
+							<field name="departure_time" widget="float_time" attrs="{'invisible': [('state','!=','order')]}"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_tree_travel" model="ir.ui.view">
+		<field name="name">Travel Tree</field>
+		<field name="model">travel.order</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="departure"/>
+				<field name="destination"/>
+				<field name="seat_number"/>
+			</tree>
+		</field>
+	</record>
+</odoo>
