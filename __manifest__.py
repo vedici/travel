@@ -5,5 +5,6 @@
 	'depends': ['base','website'],
 	'application': True,
 	'data': ['views/travel_view.xml',
-				'views/travel_menu.xml'],
+				'views/travel_menu.xml',
+				'views/web_template.xml'],
 }
