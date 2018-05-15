@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+	
+		<!-- Assets untuk FrontEnd -->
+		<template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" href="/travel/static/src/css/style.css" />
+				<script type="text/javascript" src="/travel/static/src/js/web.js"></script>
+			</xpath>
+		</template>
+	
+		<!-- Header -->
+		<template id="header" inherit_id="website.layout" name="Header Travel">
+			<xpath expr="//header//ul[@id='top_menu']/li" position="before">
+				<li>
+					<a href="/travel/home">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel</span>
+					</a>
+				</li>
+			</xpath>
+		</template>
+		
+		<!-- Footer -->
+		<template id="website.layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright">
+			<xpath expr="//footer" position="inside">
+				<div class="container mt16 mb8">
+					<div class="pull-right" t-ignore="true" t-if="not editable">
+						<a>Pesan Travel Anda Sekarang!</a>
+					</div>
+					<div class="pull-left text-muted">
+						Copyright &amp;copy; <span t-field="res_company.name">Kelompok IA</span>
+					</div>
+				</div>
+			</xpath>
+		</template>
+		
+		<!-- Halaman Tidak Ditemukan -->
+		<template id="404">
+			<t t-call="website.layout">
+				<div id="wrap">
+					<div class="oe_structure oe_empty">
+						<div class="container">
+							<h1>Error 404 Not Found</h1>
+							<p>
+								<a t-attf-href="/">Return to the Home.</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</t>
+		</template>
+			
+		<!-- Halaman Utama -->
+		<template id="home">
+			<t t-call="website.layout">
+                <t t-set="title">Travel</t>
+                <div class="oe_structure">
+					<div class="container">
+						<h1>Selamat datang di Website Travel</h1>
+						<p>
+						Kelompok 1A Polban Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+						</p>
+					</div>
+                    <div class="container">
+						<t t-foreach="cities" t-as="city">
+							<p><t t-esc="city"/></p>
+						</t>
+                    </div>
+                </div>
+            </t>
+		</template>
+			
+	</data>
+</odoo>
