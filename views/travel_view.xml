@@ -6,29 +6,48 @@
 		<field name="arch" type="xml">
 			<form string="Travel">
 				<header>
-					<button type="object" name="send_email" string="Send by Email" class="oe_highlight" />
-					<button type="object" name="print" string="Print" class="oe_highlight" />
-					<button type="object" name="confirm" string="Confirm Order"/>
+					<button type="object" name="send_email" string="Send by Email" class="oe_highlight"
+					attrs="{'invisible': [('state','!=','order')]}"/>
+					<button type="object" name="print" string="Print" class="oe_highlight"
+					attrs="{'invisible': [('state','!=','order')]}"/>
+					<button type="object" name="confirm" string="Confirm Order"
+					attrs="{'invisible': [('state','!=','order')]}"/>
 					<button type="object" name="cancel" string="Cancel"/>
+					<button type="object" groups="base.group_system" name="validate" string="Validate"
+					attrs="{'invisible': [('state','!=','waiting')]}"/>
 					<field name="state" widget="statusbar"/>
 				</header>
 				<sheet>
 					<group name="group_top">
 						<group name="group_left">
-							<h1>New</h1>
+							<h1 attrs="{'invisible': [('state','!=','order')]}">New</h1>
 						</group>
 					</group>
 					<group name="group_bottom">
+						<h1  attrs="{'invisible': [('state','!=','waiting')]}">Bayar oy!</h1>
 						<group name="group_left">
 							<field name="departure" attrs="{'invisible': [('state','!=','order')]}"/>
 							<field name="destination" attrs="{'invisible': [('state','!=','order')]}"/>
-							<field name="seat_number" attrs="{'invisible': [('state','!=','order')]}"/>
+							<field name="vehicle" attrs="{'invisible': [('state','!=','order')]}"/>
 						</group>
 						<group name="group_right">
 							<field name="departure_date" attrs="{'invisible': [('state','!=','order')]}"/>
 							<field name="departure_time" widget="float_time" attrs="{'invisible': [('state','!=','order')]}"/>
 						</group>
 					</group>
+					<notebook attrs="{'invisible': [('state','!=','order')]}">
+						<page name="seat_number_list" string="Seat Number">
+							<field name="tree_seat_number" nolabel="1" colspan="1">
+								<tree string="Tree String" editable="bottom">
+									<field name="seat_number"/>
+									<!--<field name="departure_date"/>
+									<field name="destination"/>
+									<field name="departure"/>
+									<field name="departure_time"/>-->
+								</tree>
+							</field>
+						</page>
+                    </notebook>
 				</sheet>
 			</form>
 		</field>

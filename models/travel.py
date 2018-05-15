@@ -13,18 +13,20 @@ class Travel(models.Model):
 	
 	departure = fields.Char('Departure',required=True)
 	destination = fields.Char('Destination',required=True)
-	seat_number = fields.Integer('Seat Number',required=True)
+	seat_number = fields.Integer('Seat Number')
+	#seat_number_m2o = fields.Many2one('travel.order')
 	departure_date = fields.Date('Departure Date',required=True)
 	departure_time = fields.Float('Departure Time',required=True)
 	state = fields.Selection([
             ('order', 'Order'),
-            ('passenger', 'Passenger'),
             ('waiting', 'Waiting Payment'),
             ('travel', 'Travel Order'),
             ],default='order')
-			
+	vehicle = fields.Char('Vehicle',required=True)
+	tree_seat_number = fields.One2many('travel.order', 'seat_number')
+	
 	def confirm(self):
-		self.write({'state': 'passenger'})
+		self.write({'state': 'waiting'})
 		
 		return {
 			'warning': {
@@ -32,6 +34,10 @@ class Travel(models.Model):
 				'message' : str(self.email) + " : " + str(self.phone),
 			}
 		}
+	
+	def validate(self):
+		self.write({'state': 'travel'})
+	
 	
 	@api.model
 	def _get_passenger(self):

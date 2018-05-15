@@ -5,5 +5,6 @@
 	'depends': ['base'],
 	'application': True,
 	'data': ['views/travel_view.xml',
-				'views/travel_menu.xml'],
+				'views/travel_menu.xml',
+				'security/ir.model.access.csv'],
 }
