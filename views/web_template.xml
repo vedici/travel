@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<odoo>
+	
+    <template id="header" inherit_id="website.layout" name="Header Shop My Cart Link">
+        <xpath expr="//header//ul[@id='top_menu']/li" position="before">
+   
+        </xpath>
+    </template>
+	
+	
+	
+</odoo>
