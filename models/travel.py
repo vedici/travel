@@ -43,8 +43,8 @@ class Travel(models.Model):
 #	def _get_user_partner(self):
 #		self.partner_id = self.env['res.users'].browse(self.env.uid).partner_id
 	
-#	def confirm(self):
-#		self.write({'state': 'waiting'})
+	def confirm(self):
+		self.write({'state': 'waiting'})
 		
 #		return {
 #			'warning': {
@@ -53,8 +53,8 @@ class Travel(models.Model):
 #			}
 #		}
 	
-#	def validate(self):
-#		self.write({'state': 'travel'})
+	def validate(self):
+		self.write({'state': 'travel'})
 	
 	
 #	@api.model

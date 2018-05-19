@@ -19,19 +19,19 @@
 				</header>
 				<sheet>
 					<group name="group_top">
+						<h1 groups="base.group_user" colspan="4" attrs="{'invisible': [('state','!=','waiting')]}">Please pay before the specified date !</h1>
 						<group name="group_left">
 							<h1 attrs="{'invisible': [('state','!=','order')]}">New</h1>
 						</group>
 					</group>
 					<group name="group_bottom">
-						<h1  attrs="{'invisible': [('state','!=','waiting')]}">Bayar oy!</h1>
 						<group name="group_left">
 							<field name="departure" attrs="{'invisible': [('state','!=','order')]}"/>
 							<field name="destination" attrs="{'invisible': [('state','!=','order')]}"/>
 							<field name="vehicle" attrs="{'invisible': [('state','!=','order')]}"/>
 						</group>
 						<group name="group_right">
-							<field name="departure_date" attrs="{'invisible': [('state','!=','order')]}"/>
+							<field name="departure_date" attrs="{'invisible': [('state','=','travel')],'readonly': [('state', '=', 'waiting')]}"/>
 							<field name="departure_time" widget="float_time" attrs="{'invisible': [('state','!=','order')]}"/>
 						</group>
 					</group>
