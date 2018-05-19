@@ -9,6 +9,10 @@ from odoo import models, fields, api
 	
 class SeatNumber(models.Model):
 	_name = 'travel.order.seat'
+#	_sql_constraints = [ 
+#        ('travel_order_seat_unique', 
+#         'UNIQUE (parent_id, seat_number)', 
+#         'Seat have been booked by other customers')] 
 	parent_id = fields.Many2one('travel.order')
 	seat_number = fields.Integer('seat_number')
 
