@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
+#class TravelProduct(models.Model):
+#    _inherit = "product.product"
+#
+#	departure = fields.Char('Departure',required=True)
+#	destination = fields.Char('Destination',required=True)
+	
+class SeatNumber(models.Model):
+	_name = 'travel.order.seat'
+	parent_id = fields.Many2one('travel.order')
+	seat_number = fields.Integer('seat_number')
+
 class Travel(models.Model):
 	_name = 'travel.order'
 	
@@ -13,8 +24,7 @@ class Travel(models.Model):
 	
 	departure = fields.Char('Departure',required=True)
 	destination = fields.Char('Destination',required=True)
-	seat_number = fields.Integer('Seat Number')
-	#seat_number_m2o = fields.Many2one('travel.order')
+
 	departure_date = fields.Date('Departure Date',required=True)
 	departure_time = fields.Float('Departure Time',required=True)
 	state = fields.Selection([
@@ -23,7 +33,10 @@ class Travel(models.Model):
             ('travel', 'Travel Order'),
             ],default='order')
 	vehicle = fields.Char('Vehicle',required=True)
-	tree_seat_number = fields.One2many('travel.order', 'seat_number')
+	
+#	seat_number = fields.Integer('Seat Number')
+	
+	tree_seat_number = fields.One2many('travel.order.seat', 'parent_id')
 	
 	def confirm(self):
 		self.write({'state': 'waiting'})

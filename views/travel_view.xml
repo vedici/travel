@@ -40,10 +40,6 @@
 							<field name="tree_seat_number" nolabel="1" colspan="1">
 								<tree string="Tree String" editable="bottom">
 									<field name="seat_number"/>
-									<!--<field name="departure_date"/>
-									<field name="destination"/>
-									<field name="departure"/>
-									<field name="departure_time"/>-->
 								</tree>
 							</field>
 						</page>
@@ -60,7 +56,7 @@
 			<tree>
 				<field name="departure"/>
 				<field name="destination"/>
-				<field name="seat_number"/>
+				<!--<field name="seat_number"/>-->
 			</tree>
 		</field>
 	</record>
