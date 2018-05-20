@@ -56,8 +56,24 @@
 			<tree>
 				<field name="departure"/>
 				<field name="destination"/>
-				<!--<field name="seat_number"/>-->
+				<!--admin dapat melihat user yg membuat order-->
+				<field name="create_uid" groups="base.group_system" string="User"/>
 			</tree>
+		</field>
+	</record>
+	
+	<record id="view_filter_travel_order" model="ir.ui.view">
+		<field name="name">Travel Order Filter</field>
+		<field name="model">travel.order</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="departure"/>
+				<field name="destination"/>
+				<filter string="Order"
+					domain="[('state','=','order')]"/>
+				<filter string="Waiting Payment"
+					domain="[('state','=','waiting')]"/>
+			</search>
 		</field>
 	</record>
 </odoo>
