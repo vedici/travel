@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+
+<odoo>
+	<data>
+		<report id="action_report"
+			model="travel.order"
+			string="Print Travel Order"
+			report_type="qweb-pdf"
+			name="travel.report_template" />
+	</data>
+</odoo>

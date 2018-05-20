@@ -6,7 +6,10 @@
 	'application': True,
 	'data': ['views/travel_view.xml',
 				'views/travel_menu.xml',
+				'views/pool_view.xml',
+				'views/web_template.xml',
 				'security/ir.model.access.csv',
 				'security/travel_access_rule.xml',
-				'views/web_template.xml'],
+				'reports/travel_order_report.xml',
+				'reports/travel_order_template.xml'],
 }

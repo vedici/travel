@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_pool" model="ir.ui.view">
+    <field name="name">Pool</field>
+    <field name="model">pool.place</field>
+    <field name="arch" type="xml">
+      <form string="Pool">
+        <sheet>
+          <group name="group_top">
+						<group name="group_left">
+							<h1>New Pool</h1>
+						</group>
+					</group>
+					<group name="group_bottom">
+						<group name="group_left">
+            	<field name="city"/>
+              <field name="address"/>
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+	<record id="view_tree_pool" model="ir.ui.view">
+		<field name="name">Pool Tree</field>
+		<field name="model">pool.place</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="city"/>
+				<field name="address"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_filter_pool" model="ir.ui.view">
+		<field name="name">Pool Filter</field>
+		<field name="model">pool.place</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="city"/>
+				<field name="address"/>
+			</search>
+		</field>
+	</record>
+</odoo>

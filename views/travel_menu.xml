@@ -2,25 +2,39 @@
 <odoo>
 
 	<record model="ir.actions.act_window" id="travel_order_menu">
-        <field name="name">List Travel</field>
-        <field name="res_model">travel.order</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">Create the first
-            </p>
-        </field>
-    </record>
+    <field name="name">List Travel</field>
+    <field name="res_model">travel.order</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+			<p class="oe_view_nocontent_create">Create the first</p>
+		</field>
+	</record>
 
-    <!-- Action to open To-do Task list -->
-	<act_window id="action_travel"
-		name="Travel"
-		res_model="travel.order"
-		view_mode="tree,form"	/>
-		
+	<record model="ir.actions.act_window" id="pool_menu">
+		<field name="name">List Pool</field>
+	  <field name="res_model">pool.place</field>
+	  <field name="view_type">form</field>
+	  <field name="view_mode">tree,form</field>
+	  <field name="help" type="html">
+			<p class="oe_view_nocontent_create">Create the first</p>
+		</field>
+	</record>
+
+  <!-- Action to open To-do Task list -->
+	<act_window id="action_travel" name="Travel" res_model="travel.order" view_mode="tree,form"	/>
+
 	<!-- Menu item to open To-do Task List -->
 	<menuitem id="menu_travel"
 		name="Travel"
 		action="action_travel"	/>
-		
+
+	<menuitem id="menu_list_travel" name="Travel" parent="menu_travel"/>
+
+	<menuitem id="submenu_list_travel" name="List Travel" parent="menu_list_travel" action="travel_order_menu"/>
+
+	<menuitem id="menu_list_pool" name="Pool" parent="menu_travel"/>
+
+	<menuitem id="submenu_list_pool" name="List Pool" parent="menu_list_pool" action="pool_menu"/>
+
 </odoo>

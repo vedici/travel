@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+	<data>
+		<template id="report_template" >
+			<t t-call="report.html_container">
+				<t t-if="o and 'company_id' in o">
+		      <t t-set="company" t-value="o.company_id"></t>
+		    </t>
+		    <t t-if="not o or not 'company_id' in o">
+		      <t t-set="company" t-value="res_company"></t>
+		   	</t>
+				<div class="header">
+					<div class="row">
+						<div class="col-xs-6">
+							<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 85px;" />
+						</div>
+						<div class="col-xs-6 text-right" style="font:15px lucida-console,sans-serif !important; background-color:#893b74 !important;" >
+							<span style="color:#fff !important;" t-field="company.partner_id" /><br/>
+							<span style="color:#fff !important;" t-field="company.partner_id.street" /><br/>
+							<span style="color:#fff !important;" t-field="company.partner_id.street2" /><br/>
+							<span style="color:#fff !important;" t-field="company.partner_id.city" /><br/>
+							<span style="color:#fff !important;" t-field="company.partner_id.country_id" /><br/>
+							<span style="color:#fff !important;" t-field="company.partner_id.vat" /><br/>
+						</div>
+					</div>
+				</div>
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="report.external_layout">
+						<div class="page">
+	            <div class="oe_structure"/>
+							<div class="row">
+								<div class="col-xs-6" style="font-size: 35px !important;" >
+									<p>
+									  Departure : <span t-field="doc.departure"/><br/>
+										Destination : <span t-field="doc.destination"/><br/>
+										Car Type : <span t-field="doc.vehicle"/>
+									</p>
+								</div>
+								<div class="col-xs-6" style="font-size: 35px !important;" >
+									<p>
+										Departure Date : <span t-field="doc.departure_date"/><br/>
+										Departure Time : <span t-field="doc.departure_time"/><br/>
+										Seat Number : <p t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_number"/>, </p>
+									</p>
+								</div>
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
