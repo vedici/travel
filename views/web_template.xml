@@ -172,13 +172,17 @@
 							<h1>Travel Order</h1>
 						</div>
 						<div class="row">
-							<h3>Account Information</h3>
-							<t t-foreach="partners" t-as="partner">
-								<p>Name : <t t-esc="partners.name"/></p>
-								<p>Email : <t t-esc="partners.email"/></p>
-								<p>Phone : <t t-esc="partners.phone"/></p>
-								<p>Mobile : <t t-esc="partners.mobile"/></p>
-							</t>
+							<div class="panel panel-default o_panel s_panel">
+								<div class="panel-heading ">
+									<h3 class="panel-title o_default_snippet_text">Account Information</h3>
+								</div>
+								<div class="panel-body">
+									<p>Name : <t t-esc="partner.name"/></p>
+									<p>Email : <t t-esc="partner.email"/></p>
+									<p>Phone : <t t-esc="partner.phone"/></p>
+									<p>Mobile : <t t-esc="partner.mobile"/></p>
+								</div>
+							</div>
 						</div>
 						<div class="row">
 							<h3>Order Information</h3>
@@ -192,6 +196,7 @@
 										<th>Departure Time</th>
 										<th>State</th>
 										<th>Vehicle</th>
+										<th>Seat Number</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -200,12 +205,29 @@
 										<t t-set="i" t-value="i+1"/>
 										<tr>
 											<td> <span t-esc="i"/> </td>
-											<td><t t-esc="travel.departure"/></td>
-											<td><t t-esc="travel.destination"/></td>
+											<td>
+												<ul>
+													<t t-esc="travel.departure.city"/><br/>
+													<t t-esc="travel.departure.address"/>
+												</ul>
+											</td>
+											<td>
+												<ul>
+													<t t-esc="travel.destination.city"/><br/>
+													<t t-esc="travel.destination.address"/>
+												</ul>
+											</td>
 											<td><t t-esc="travel.departure_date"/></td>
 											<td><t t-esc="travel.departure_time"/></td>
 											<td><t t-esc="travel.state"/></td>
-											<td><t t-esc="travel.order"/></td>
+											<td><t t-esc="travel.vehicle"/></td>
+											<td>
+												<ul>
+													<t t-foreach="tree_seat_number" t-as="seat">
+														<li><t t-esc="tree_seat_number.seat_number"/></li>
+													</t>
+												</ul>
+											</td>
 										</tr>
 									</t>
 								</tbody>

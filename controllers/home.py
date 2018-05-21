@@ -15,14 +15,12 @@ class Home(http.Controller) :
 		uid = request.uid
 
 		if uid is not None and isinstance(uid, int):
-			partner_id = request.env['res.users'].browse(self.env.uid).partner_id
-			partners = request.env['res.partner'].search(['id', '=', partner_id])
-#			partner_id = request.env['res.users'].browse(uid).partner_id
 
-			travels = request.env['travel.order'].search(['partner_id','=', partner_id]) #search(['create_uid', '=', uid])
+			partner = request.env['res.users'].browse(uid).partner_id
+			travels = request.env['travel.order'].search([('partner_id','=', partner.id)]) #search(['create_uid', '=', uid])
 
 			return request.render('travel.order', {
-				'partners' : partners,
+				'partner' : partner,
 				'travels' : travels
 			})
 
