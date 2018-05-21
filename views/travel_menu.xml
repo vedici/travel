@@ -45,7 +45,7 @@
 
 	<menuitem id="submenu_list_pool" name="List Pool" parent="menu_list_pool" action="pool_menu"/>
 	
-	<menuitem id="menu_list_schedule" groups="base.group_system" name="Schedule" parent="menu_travel"/>
+	<menuitem id="menu_list_schedule" groups="base.group_user" name="Schedule" parent="menu_travel"/>
 
 	<menuitem id="submenu_list_schedule" name="List Schedule" parent="menu_list_schedule" action="schedule_menu"/>
 
