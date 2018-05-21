@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_schedule" model="ir.ui.view">
+		<field name="name">Schedule</field>
+		<field name="model">travel.schedule</field>
+		<field name="arch" type="xml">
+			<form string="Schedule">
+				<sheet>
+					<group name="group_top">
+						<group name="group_left">
+							<h1>New Schedule</h1>
+						</group>
+					</group>
+					<group name="group_bottom">
+						<group name="group_left">
+							<field name="departure"/>
+							<field name="destination"/>
+						</group>
+						<group name="group_right">
+							<field name="departure_date"/>
+							<field name="departure_time" widget="float_time"/>
+						</group>
+					</group>
+					<notebook>
+						<page name="vehicle_list" string="Vehicle">
+							<field name="vehicle_list"/>
+						</page>
+                    </notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_tree_schedule" model="ir.ui.view">
+		<field name="name">Schedule Tree</field>
+		<field name="model">travel.schedule</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="departure"/>
+				<field name="destination"/>
+				<field name="departure_date"/>
+				<field name="departure_time"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_filter_schedule" model="ir.ui.view">
+		<field name="name">Schedule Filter</field>
+		<field name="model">travel.schedule</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="departure"/>
+				<field name="destination"/>
+			</search>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record model="pool.place" id="pool_1">
+            <field name="city">Bandung</field>
+			<field name="address">BTC, Jalan Dr. Djunjunan No. 143-149</field>
+        </record>
+        
+        <record model="pool.place" id="pool_2">
+            <field name="city">Jakarta</field>
+			<field name="address">Pancoran, Jl.Saharjo No.107D-Jaksel</field>
+        </record>
+        
+        <record model="pool.place" id="pool_3">
+            <field name="city">Cirebon</field>
+			<field name="address">CBC, Blok B3 Jl.Tuparev No.23</field>
+        </record>
+    </data>
+</odoo>

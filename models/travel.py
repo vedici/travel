@@ -25,8 +25,8 @@ class Travel(models.Model):
 #	email = fields.Char('Email', related='partner_id.email')
 #	phone = fields.Char('Phone Number', related='partner_id.phone')
 	
-	departure = fields.Char('Departure',required=True)
-	destination = fields.Char('Destination',required=True)
+	departure = fields.Many2one('pool.place',required=True)
+	destination = fields.Many2one('pool.place',required=True)
 
 	departure_date = fields.Date('Departure Date',required=True)
 	departure_time = fields.Float('Departure Time',required=True)
@@ -35,7 +35,7 @@ class Travel(models.Model):
             ('waiting', 'Waiting Payment'),
             ('travel', 'Travel Order'),
             ],default='order')
-	vehicle = fields.Char('Vehicle',required=True)
+	vehicle = fields.Many2one('fleet.vehicle',required=True)
 	
 	tree_seat_number = fields.One2many('travel.order.seat', 'order_id')
 

@@ -20,11 +20,19 @@
 			<p class="oe_view_nocontent_create">Create the first</p>
 		</field>
 	</record>
+	
+	<record model="ir.actions.act_window" id="schedule_menu">
+		<field name="name">List Schedule</field>
+	  <field name="res_model">travel.schedule</field>
+	  <field name="view_type">form</field>
+	  <field name="view_mode">tree,form</field>
+	  <field name="help" type="html">
+			<p class="oe_view_nocontent_create">Create the first</p>
+		</field>
+	</record>
 
-  <!-- Action to open To-do Task list -->
 	<act_window id="action_travel" name="Travel" res_model="travel.order" view_mode="tree,form"	/>
 
-	<!-- Menu item to open To-do Task List -->
 	<menuitem id="menu_travel"
 		name="Travel"
 		action="action_travel"	/>
@@ -33,8 +41,12 @@
 
 	<menuitem id="submenu_list_travel" name="List Travel" parent="menu_list_travel" action="travel_order_menu"/>
 
-	<menuitem id="menu_list_pool" name="Pool" parent="menu_travel"/>
+	<menuitem id="menu_list_pool" groups="base.group_system" name="Pool" parent="menu_travel"/>
 
 	<menuitem id="submenu_list_pool" name="List Pool" parent="menu_list_pool" action="pool_menu"/>
+	
+	<menuitem id="menu_list_schedule" groups="base.group_system" name="Schedule" parent="menu_travel"/>
+
+	<menuitem id="submenu_list_schedule" name="List Schedule" parent="menu_list_schedule" action="schedule_menu"/>
 
 </odoo>
