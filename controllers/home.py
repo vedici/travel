@@ -11,16 +11,18 @@ class Home(http.Controller) :
 	@http.route('/travel/orders', auth='public', website=True)
 	def web_orders(self, **kw) :
 
-		uid = request.session.uid
+#		uid = request.session.uid
+		uid = request.uid
 
-		if uid is not None:
-			partners = request.env['res.partner'].search(['user_id', '=', uid])
+		if uid is not None and isinstance(uid, int):
+			partner_id = request.env['res.users'].browse(self.env.uid).partner_id
+			partners = request.env['res.partner'].search(['id', '=', partner_id])
 #			partner_id = request.env['res.users'].browse(uid).partner_id
 
-			travels = request.env['travel.order'].search(['create_uid', '=', uid]) #search(['partner_id','=', partner_id])
+			travels = request.env['travel.order'].search(['partner_id','=', partner_id]) #search(['create_uid', '=', uid])
 
 			return request.render('travel.order', {
-#				'partners' : partners,
+				'partners' : partners,
 				'travels' : travels
 			})
 
