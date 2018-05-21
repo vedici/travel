@@ -50,6 +50,20 @@
 				</div>
 			</t>
 		</template>
+		
+		<!-- Halaman Login -->
+		<template id="login">
+			<t t-call="website.layout">
+                <t t-set="title">Travel</t>
+                <div class="oe_structure">
+					<div class="container">
+					
+						<h1>Please Login Before</h1>
+
+					</div>
+                </div>
+            </t>
+		</template>
 			
 		<!-- Halaman Utama -->
 		<template id="home">
@@ -57,15 +71,47 @@
                 <t t-set="title">Travel</t>
                 <div class="oe_structure">
 					<div class="container">
-						<h1>Selamat datang di Website Travel</h1>
-						<p>
-						Kelompok 1A Polban Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</p>
+					
+						<h1>Travel Order</h1>
+
 					</div>
-                    <div class="container">
-						<t t-foreach="cities" t-as="city">
-							<p><t t-esc="city"/></p>
+                    
+					<div class="container">
+						<h2>Account Information</h2>
+						<t t-foreach="partners" t-as="partner">
+							<p>Name : <t t-esc="partner.name"/></p>
+							<p>Email : <t t-esc="partner.email"/></p>
+							<p>Phone : <t t-esc="partner.phone"/></p>
+							<p>Mobile : <t t-esc="partner.mobile"/></p>
 						</t>
+                    </div>
+					
+					<div class="container">
+						<h2>Order Information</h2>
+						<table>
+							<thead>
+								<tr>
+									<th>Departure</th>
+									<th>Destination</th>
+									<th>Departure Date</th>
+									<th>Departure Time</th>
+									<th>State</th>
+									<th>Vehicle</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-foreach="travels" t-as="travel">
+									<tr>
+										<td><t t-esc="travel.departure"/></td>
+										<td><t t-esc="travel.destination"/></td>
+										<td><t t-esc="travel.departure_date"/></td>
+										<td><t t-esc="travel.departure_time"/></td>
+										<td><t t-esc="travel.state"/></td>
+										<td><t t-esc="travel.order"/></td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
                     </div>
                 </div>
             </t>
