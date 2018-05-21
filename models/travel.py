@@ -20,6 +20,7 @@ class Travel(models.Model):
 	_name = 'travel.order'
 	
 	partner_id = fields.Many2one('res.partner', default=lambda self: self.env['res.users'].browse(self.env.uid).partner_id)
+	schedule_id = fields.Many2one('travel.schedule')
 	
 #	passenger = fields.Char('Name', related='partner_id.name')
 #	email = fields.Char('Email', related='partner_id.email')
@@ -55,7 +56,11 @@ class Travel(models.Model):
 	
 	def validate(self):
 		self.write({'state': 'travel'})
-	
+
+#	@api.onchange('departure', 'destination', 'departure_date', 'departure_time')
+#	def actionChange(self):
+#		pass
+		
 	
 #	@api.model
 #	def _get_passenger(self):

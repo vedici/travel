@@ -9,6 +9,7 @@ class TravelSchedule(models.Model):
 	departure_date = fields.Date('Departure Date',required=True)
 	departure_time = fields.Float('Departure Time',required=True)
 	vehicle_list = fields.One2many('fleet.vehicle', 'schedule_id')
+	order_list = fields.One2many('travel.order', 'schedule_id')
 	
 class Vehicle(models.Model):
 	_inherit = 'fleet.vehicle'

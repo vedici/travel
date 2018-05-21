@@ -14,8 +14,18 @@
 		<template id="header" inherit_id="website.layout" name="Header Travel">
 			<xpath expr="//header//ul[@id='top_menu']/li" position="before">
 				<li>
-					<a href="/travel/home">
-						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel</span>
+					<a href="/travel/orders">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Order</span>
+					</a>
+				</li>
+				<li>
+					<a href="/travel/schedules">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Schedules</span>
+					</a>
+				</li>
+				<li>
+					<a href="/travel/pools">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Pools</span>
 					</a>
 				</li>
 			</xpath>
@@ -64,9 +74,96 @@
                 </div>
             </t>
 		</template>
-			
-		<!-- Halaman Utama -->
-		<template id="home">
+
+		<!-- Halaman List Pool -->
+		<template id="pool">
+			<t t-call="website.layout">
+                <t t-set="title">Travel</t>
+                <div class="oe_structure">
+					<div class="container">
+						<br/>
+						<div class="panel panel-default o_panel s_panel">
+							<div class="panel-heading ">
+								<h3 class="panel-title o_default_snippet_text">Travel Pools</h3>
+							</div>
+							<div class="panel-body">
+
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>City</th>
+											<th>Address</th>
+										</tr>
+									</thead>
+									<tbody>
+										<t t-set="i" t-value="0"/>
+										<t t-foreach="pools" t-as="pool">
+											<t t-set="i" t-value="i+1"/>
+											<tr>
+												<td> <span t-esc="i"/> </td>
+												<td><t t-esc="pool.city"/></td>
+												<td><t t-esc="pool.address"/></td>
+											</tr>
+										</t>
+									</tbody>
+								</table>
+							</div>
+						
+						</div>
+                    </div>
+                </div>
+            </t>
+		</template>
+		
+		<!-- Halaman List Pool -->
+		<template id="schedule">
+			<t t-call="website.layout">
+                <t t-set="title">Travel</t>
+				    <div class="oe_structure">
+					<div class="container">
+						<br/>
+						<div class="panel panel-default o_panel s_panel">
+							<div class="panel-heading ">
+								<h3 class="panel-title o_default_snippet_text">Travel Schedule</h3>
+							</div>
+							<div class="panel-body">
+
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Departure</th>
+										<th>Destination</th>
+										<th>Departure Date</th>
+										<th>Departure Time</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-set="i" t-value="0"/>
+									<t t-foreach="schedules" t-as="schedule">
+										<t t-set="i" t-value="i+1"/>
+										<tr>
+											<td> <span t-esc="i"/> </td>
+											<td><t t-esc="schedule.departure"/></td>
+											<td><t t-esc="schedule.destination"/></td>
+											<td><t t-esc="schedule.departure_date"/></td>
+											<td><t t-esc="schedule.departure_time"/></td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+							
+							</div>
+						
+						</div>
+                    </div>
+                </div>
+            </t>
+		</template>
+		
+		<!-- Halaman Order -->
+		<template id="order">
 			<t t-call="website.layout">
                 <t t-set="title">Travel</t>
                 <div class="oe_structure">
@@ -78,19 +175,20 @@
                     
 					<div class="container">
 						<h2>Account Information</h2>
-						<t t-foreach="partners" t-as="partner">
-							<p>Name : <t t-esc="partner.name"/></p>
-							<p>Email : <t t-esc="partner.email"/></p>
-							<p>Phone : <t t-esc="partner.phone"/></p>
-							<p>Mobile : <t t-esc="partner.mobile"/></p>
-						</t>
+						<!--<t t-foreach="partners" t-as="partner">
+							<p>Name : <t t-esc="partners.name"/></p>
+							<p>Email : <t t-esc="partners.email"/></p>
+							<p>Phone : <t t-esc="partners.phone"/></p>
+							<p>Mobile : <t t-esc="partners.mobile"/></p>
+						</t>-->
                     </div>
 					
 					<div class="container">
 						<h2>Order Information</h2>
-						<table>
+						<table class="table table-bordered">
 							<thead>
 								<tr>
+									<th>No</th>
 									<th>Departure</th>
 									<th>Destination</th>
 									<th>Departure Date</th>
@@ -100,8 +198,11 @@
 								</tr>
 							</thead>
 							<tbody>
+								<t t-set="i" t-value="0"/>
 								<t t-foreach="travels" t-as="travel">
+									<t t-set="i" t-value="i+1"/>
 									<tr>
+										<td> <span t-esc="i"/> </td>
 										<td><t t-esc="travel.departure"/></td>
 										<td><t t-esc="travel.destination"/></td>
 										<td><t t-esc="travel.departure_date"/></td>
