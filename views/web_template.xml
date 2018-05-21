@@ -224,7 +224,7 @@
 											<td>
 												<ul>
 													<t t-foreach="tree_seat_number" t-as="seat">
-														<li><t t-esc="tree_seat_number.seat_number"/></li>
+														<li><t t-esc="seat.seat_number"/></li>
 													</t>
 												</ul>
 											</td>
