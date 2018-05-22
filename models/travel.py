@@ -26,6 +26,8 @@ class Travel(models.Model):
 #	email = fields.Char('Email', related='partner_id.email')
 #	phone = fields.Char('Phone Number', related='partner_id.phone')
 	
+	isPay = fields.Boolean(default=False)
+	
 	departure = fields.Many2one('pool.place',required=True)
 	destination = fields.Many2one('pool.place',required=True)
 

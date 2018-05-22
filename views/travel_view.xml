@@ -58,6 +58,7 @@
 				<field name="destination"/>
 				<!--admin dapat melihat user yg membuat order-->
 				<field name="create_uid" groups="base.group_system" string="User"/>
+				<field name="state" groups="base.group_system" string="Status"/>
 			</tree>
 		</field>
 	</record>
