@@ -25,6 +25,27 @@
       </form>
     </field>
   </record>
+  
+  <record id="view_form_pool_address" model="ir.ui.view">
+    <field name="name">Pool</field>
+    <field name="model">travel.pool.place</field>
+    <field name="arch" type="xml">
+      <form string="Pool Address">
+        <sheet>
+          <group name="group_top">
+						<group name="group_left">
+							<h1>New Pool Address</h1>
+						</group>
+					</group>
+					<group name="group_bottom">
+						<group name="group_left">
+            	<field name="address"/>
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
 
 	<record id="view_tree_pool" model="ir.ui.view">
 		<field name="name">Pool Tree</field>

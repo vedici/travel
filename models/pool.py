@@ -11,5 +11,4 @@ class PoolPlace(models.Model):
 	_name = 'travel.pool.place'
 	_rec_name = 'address'
 	city_ids = fields.Many2one('travel.pool.city')
-	address = fields.Char('Address')
-	
+	address = fields.Text('Address')
