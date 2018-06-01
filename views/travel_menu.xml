@@ -13,7 +13,7 @@
 
 	<record model="ir.actions.act_window" id="pool_menu">
 		<field name="name">List Pool</field>
-	  <field name="res_model">pool.place</field>
+	  <field name="res_model">travel.pool.city</field>
 	  <field name="view_type">form</field>
 	  <field name="view_mode">tree,form</field>
 	  <field name="help" type="html">

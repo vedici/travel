@@ -9,7 +9,6 @@
 				'views/pool_view.xml',
 				'views/schedule_view.xml',
 				'views/web_template.xml',
-				'demo/demo.xml',
 				'security/ir.model.access.csv',
 				'security/travel_access_rule.xml',
 				'reports/travel_order_report.xml',

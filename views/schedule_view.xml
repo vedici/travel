@@ -15,6 +15,7 @@
 						<group name="group_left">
 							<field name="departure"/>
 							<field name="destination"/>
+							<field name="vehicle"/>
 						</group>
 						<group name="group_right">
 							<field name="departure_date"/>
@@ -22,8 +23,12 @@
 						</group>
 					</group>
 					<notebook>
-						<page name="vehicle_list" string="Vehicle">
-							<field name="vehicle_list"/>
+						<page name="pool" string="Pool">
+							<field name="pool_list">
+								<tree string="Pool" editable="bottom">
+									<field name="address"/>
+								</tree>
+							</field>
 						</page>
                     </notebook>
 				</sheet>
