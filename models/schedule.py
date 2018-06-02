@@ -8,14 +8,20 @@ class TravelSchedule(models.Model):
 	destination = fields.Many2one('travel.pool.city', required=True)
 	departure_date = fields.Date('Departure Date',required=True)
 	departure_time = fields.Float('Departure Time',required=True)
-	vehicle = fields.Many2one('fleet.vehicle')
+	vehicle = fields.Many2one('fleet.vehicle', required=True)
 	order_list = fields.One2many('travel.order', 'schedule_id')
-	pool_list = fields.Many2many('travel.pool.place')
+	pool_list = fields.One2many('travel.pool.line', 'schedule')
 	
-#class PoolLine(models.Model):
-#	_name = 'pool.line'
-#	ref = fields.Many2one('travel.schedule', string="Schedule")
-#	pool_location = fields.Many2one('pool.place')
+class PoolLine(models.Model):
+	_name = 'travel.pool.line'
+	schedule = fields.Many2one('travel.schedule', string="Schedule")
+	pool_location = fields.Many2one('travel.pool.place',ondelete='cascade')
+	name = fields.Char(compute="_compute_pool_name", store=False)
+	
+	@api.multi
+	def _compute_pool_name(self):
+		for record in self:
+			record.name = record.pool_location.city_ids.city + '/' + record.pool_location.address
 	
 #class Vehicle(models.Model):
 #	_inherit = 'fleet.vehicle'

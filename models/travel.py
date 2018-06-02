@@ -28,8 +28,8 @@ class Travel(models.Model):
 	
 	isPay = fields.Boolean(default=False)
 	
-	departure = fields.Many2one('travel.pool.city',required=True)
-	destination = fields.Many2one('travel.pool.city',required=True)
+	departure = fields.Many2one('travel.pool.line',required=True)
+	destination = fields.Many2one('travel.pool.line',required=True)
 
 	departure_date = fields.Date('Departure Date',required=True)
 	departure_time = fields.Float('Departure Time',required=True)
@@ -38,7 +38,6 @@ class Travel(models.Model):
             ('waiting', 'Waiting Payment'),
             ('travel', 'Travel Order'),
             ],default='order')
-	vehicle = fields.Many2one('fleet.vehicle',required=True)
 	
 	tree_seat_number = fields.One2many('travel.order.seat', 'order_id')
 
@@ -58,7 +57,14 @@ class Travel(models.Model):
 	
 	def validate(self):
 		self.write({'state': 'travel'})
-
+		
+	@api.onchange('departure')
+	def destination_onchange(self):
+	#Pemilihan lokasi tujuan (Destination) berdasarkan keberangkatan (Departure) pada jadwal yang sama
+		res = {}
+		res['domain'] = {'destination': ['&',('schedule', '=', self.departure.schedule.id),('pool_location', '!=', self.departure.pool_location.id)]}
+		return res
+		
 #	@api.onchange('departure', 'destination', 'departure_date', 'departure_time')
 #	def actionChange(self):
 #		pass
