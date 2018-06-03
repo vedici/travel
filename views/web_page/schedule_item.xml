@@ -3,7 +3,7 @@
 	<data>
 		
 		<!-- Halaman List Pool -->
-		<template id="schedule">
+		<template id="schedule-item">
 			<t t-call="website.layout">
                 <t t-set="title">Travel</t>
 				    <div class="oe_structure">
@@ -26,21 +26,20 @@
 									</tr>
 								</thead>
 								<tbody>
-									<t t-set="i" t-value="0"/>
-									<t t-foreach="schedules" t-as="schedule">
-										<t t-set="i" t-value="i+1"/>
-										<tr class='clickable-row' data-href='url://' custom="click-link">
-											<td> <span t-esc="i"/> </td>
-											<td><t t-esc="schedule.departure"/></td>
-											<td><t t-esc="schedule.destination"/></td>
-											<td><t t-esc="schedule.departure_date"/></td>
-											<td><t t-esc="schedule.departure_time"/></td>
-										</tr>
-									</t>
+									<tr>
+										<td><t t-esc="schedule.departure"/></td>
+										<td><t t-esc="schedule.destination"/></td>
+										<td><t t-esc="schedule.departure_date"/></td>
+										<td><t t-esc="schedule.departure_time"/></td>
+									</tr>
 								</tbody>
 							</table>
 							
 							</div>
+							
+							<button class="btn btn-default">
+								Order
+							</button>
 						
 						</div>
                     </div>

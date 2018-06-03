@@ -14,6 +14,7 @@
 				'views/web_page/order.xml',
 				'views/web_page/pool.xml',
 				'views/web_page/schedule.xml',
+				'views/web_page/schedule_item.xml',
 				'security/ir.model.access.csv',
 				'security/travel_access_rule.xml',
 				'reports/travel_order_report.xml',
