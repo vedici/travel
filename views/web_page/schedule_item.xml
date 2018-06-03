@@ -128,7 +128,7 @@
 
 									<div class="form-group">
 										<label for="seats">Seats</label>
-										<input type="text" id="seats" class="o_website_from_input" name="tree_seat_number[]"/>
+										<input type="text" id="seats" class="o_website_from_input form-control" name="tree_seat_number[]"/>
 									</div>
 						
 									<button type="submit" class="o_website_form_send btn btn-default btn-lg">Order</button>

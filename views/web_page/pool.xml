@@ -7,17 +7,17 @@
 			<t t-call="website.layout">
                 <t t-set="title">Travel</t>
                 <div class="oe_structure">
+					<div class="jumbotron text-center">
+						<h1>List Pool</h1>
+					</div>
 					<div class="container">
 						<br/>
 						<div class="col-md-8 col-md-offset-2">
 						
 							<div class="panel panel-default o_panel s_panel">
-								<div class="panel-heading ">
-									<h3 class="panel-title o_default_snippet_text">Travel Pools</h3>
-								</div>
 								<div class="panel-body">
 
-									<table class="table table-bordered">
+									<table class="table table-stripped">
 										<thead>
 											<tr>
 												<th class="col-md-1">No</th>
@@ -32,7 +32,13 @@
 												<tr>
 													<td> <span t-esc="i"/> </td>
 													<td><t t-esc="pool.city"/></td>
-													<td><t t-esc="pool.address"/></td>
+													<td>
+														<ul class="list-unstyled">
+															<t t-foreach="pool.pools" t-as="address_item">
+																<li><t t-esc="address_item.address"/></li>
+															</t>
+														</ul>
+													</td>
 												</tr>
 											</t>
 										</tbody>

@@ -77,7 +77,7 @@ class Order(http.Controller) :
 #	@http.route('/travel/pools', type='http', auth='public', methods=['GET'], website=True)
 	@http.route('/travel/pools', auth='public', website=True)
 	def web_pools(self, **kw) :
-		listpools = request.env['pool.place'].search([])
+		listpools = request.env['travel.pool.city'].search([])
 		return request.render('travel.pool', {
 			'pools' : listpools
 		})
