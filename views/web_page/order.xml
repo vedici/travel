@@ -7,21 +7,36 @@
 			<t t-call="website.layout">
                 <t t-set="title">Travel</t>
                 <div class="oe_structure">
+					<div class="jumbotron text-center">
+						<h1>Your Order</h1>
+					</div>
 					<div class="container">
-						<div class="row">
-							<h1>Travel Order</h1>
-						</div>
 						<div class="row">
 				
 							<div>
 								<h3>Account Information</h3>
 							
-								<div class="panel-body">
-									<p>Name		: <t t-esc="partner.name"/></p>
-									<p>Email	: <t t-esc="partner.email"/></p>
-									<p>Phone	: <t t-esc="partner.phone"/></p>
-									<p>Mobile	: <t t-esc="partner.mobile"/></p>
+								<div>
+									<table class="table borderless">
+										<tr>
+											<td>Name</td>
+											<td><t t-esc="partner.name"/></td>
+										</tr>
+										<tr>
+											<td>Email</td> 
+											<td><t t-esc="partner.email"/></td>
+										</tr>
+										<tr>
+											<td>Phone</td>
+											<td><t t-esc="partner.phone"/></td>
+										</tr>
+										<tr>
+											<td>Mobile</td>
+											<td><t t-esc="partner.mobile"/></td>
+										</tr>
+									</table>
 								</div>
+						
 							</div>
 							<div>
 					
@@ -47,24 +62,24 @@
 												<td> <span t-esc="i"/> </td>
 												<td>
 													<ul>
-														<t t-esc="travel.departure.city"/><br/>
-														<t t-esc="travel.departure.address"/>
+														<t t-esc="travel.departure.name"/>
 													</ul>
 												</td>
 												<td>
 													<ul>
-														<t t-esc="travel.destination.city"/><br/>
-														<t t-esc="travel.destination.address"/>
+														<t t-esc="travel.destination.name"/>
 													</ul>
 												</td>
 												<td><t t-esc="travel.departure_date"/></td>
 												<td><t t-esc="travel.departure_time"/></td>
 												<td><t t-esc="travel.state"/></td>
-												<td><t t-esc="travel.vehicle"/></td>
+												<td><t t-esc="travel.schedule_id.vehicle.name"/></td>
 												<td>
-													<t t-foreach="tree_seat_number" t-as="seat">
-														<t t-esc="seat.seat_number"/>
-													</t>
+													<ul class="list-unstyled">
+														<t t-foreach="travel.tree_seat_number" t-as="seat">
+															<li><t t-esc="seat.seat_number"/></li>
+														</t>
+													</ul>
 												</td>
 											</tr>
 										</t>

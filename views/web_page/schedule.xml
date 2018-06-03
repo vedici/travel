@@ -6,59 +6,53 @@
 		<template id="schedule">
 			<t t-call="website.layout">
                 <t t-set="title">Travel</t>
-				    <div class="oe_structure">
+				<div class="oe_structure">
+					<div class="jumbotron text-center">
+						<h1>Travel Schedule</h1>
+					</div>
 					<div class="container">
-						<br/>
-						<div class="panel panel-default o_panel s_panel">
-							<div class="panel-heading ">
-								<h3 class="panel-title o_default_snippet_text">Travel Schedule</h3>
-							</div>
-							<div class="panel-body">
-
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th class="col-md-1">No</th>
-										<th class="col-md-5">Departure</th>
-										<th class="col-md-5">Destination</th>
-										<th class="col-md-4">Departure Date</th>
-										<th class="col-md-3">Departure Time</th>
-										<th class="col-md-4">Pool</th>
-										<th class="col-md-3">Order</th>
-									</tr>
-								</thead>
-								<tbody>
-									<t t-set="i" t-value="0"/>
-									<t t-foreach="schedules" t-as="schedule">
-										<t t-set="i" t-value="i+1"/>
-										<tr class="clickable-row"> <!-- data-href="url://${base_uri}/travel/schedule/{{slug(schedule)}}">-->
-											<td> <span t-esc="i"/> </td>
-											<td><t t-esc="schedule.departure.city"/></td>
-											<td><t t-esc="schedule.destination.city"/></td>
-											<td><t t-esc="schedule.departure_date"/></td>
-											<td><t t-esc="schedule.departure_time"/></td>
-											<td>
-												<ul class="list-unstyled">
-													<t t-foreach="schedule.pool_list" t-as="schedule_item">
-														<li><t t-esc="schedule_item.name"/></li>
-													</t>
-												</ul>
-											</td>
-											<td>
-												<a t-attf-href="/travel/schedule/{{slug(schedule)}}">
-													<button class="btn btn-default">
-													Order
-													</button>
-												</a>
-											</td>
-										</tr>
-									</t>
-								</tbody>
-							</table>
 							
-							</div>
-						
-						</div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="col-md-1">No</th>
+									<th class="col-md-5">Departure</th>
+									<th class="col-md-5">Destination</th>
+									<th class="col-md-4">Departure Date</th>
+									<th class="col-md-3">Departure Time</th>
+									<th class="col-md-4">Pool</th>
+									<th class="col-md-3">Order</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-set="i" t-value="0"/>
+								<t t-foreach="schedules" t-as="schedule">
+									<t t-set="i" t-value="i+1"/>
+									<tr class="clickable-row"> <!-- data-href="url://${base_uri}/travel/schedule/{{slug(schedule)}}">-->
+										<td> <span t-esc="i"/> </td>
+										<td><t t-esc="schedule.departure.city"/></td>
+										<td><t t-esc="schedule.destination.city"/></td>
+										<td><t t-esc="schedule.departure_date"/></td>
+										<td><t t-esc="schedule.departure_time"/></td>
+										<td>
+											<ul class="list-unstyled">
+												<t t-foreach="schedule.pool_list" t-as="schedule_item">
+													<li><t t-esc="schedule_item.name"/></li>
+												</t>
+											</ul>
+										</td>
+										<td>
+											<a t-attf-href="/travel/schedule/{{slug(schedule)}}">
+												<button class="btn btn-default">
+												Order
+												</button>
+											</a>
+										</td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+		
                     </div>
                 </div>
             </t>

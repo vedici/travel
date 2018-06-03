@@ -69,9 +69,7 @@ class Order(http.Controller) :
 	@http.route('/travel/orders/pay/', type='http', auth='user', methods=['POST'], website=True)
 	def web_pay_order(self, schedule) :
 
-		return request.render('travel.schedule_item', {
-			'schedule' : schedule
-		})
+		return request.render('travel.order_success')
 		
 #
 # 	Mendapatkan List Pool 

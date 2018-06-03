@@ -15,7 +15,7 @@
 			<xpath expr="//header//ul[@id='top_menu']/li" position="before">
 				<li>
 					<a href="/travel/orders">
-						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Order</span>
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Your Order</span>
 					</a>
 				</li>
 				<li>
