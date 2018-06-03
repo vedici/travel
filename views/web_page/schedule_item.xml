@@ -5,45 +5,85 @@
 		<!-- Halaman List Pool -->
 		<template id="schedule-item">
 			<t t-call="website.layout">
-                <t t-set="title">Travel</t>
-				    <div class="oe_structure">
+				<t t-set="title">Order Schedule</t>
+				<div class="jumbotron text-center">
+					<h1>Order Seat</h1>
+				</div>
+				<div class="oe_structure">
+					<div class="jumbotron text-center">
+						<h1>Order Seat 2</h1>
+					</div>
 					<div class="container">
 						<br/>
-						<div class="jumbotron panel panel-default o_panel s_panel">
-							<div class="panel-heading">
-								<h3 class="panel-title o_default_snippet_text">Travel Schedule</h3>
+						<div class="row">
+						
+							<div>
+								<h3 class="text-center">Account Information</h3>
+								<div>
+									<table class="table borderless">
+										<tr>
+											<td>Name</td>
+											<td><t t-esc="partner.name"/></td>
+										</tr>
+										<tr>
+											<td>Email</td> 
+											<td><t t-esc="partner.email"/></td>
+										</tr>
+										<tr>
+											<td>Phone</td>
+											<td><t t-esc="partner.phone"/></td>
+										</tr>
+										<tr>
+											<td>Mobile</td>
+											<td><t t-esc="partner.mobile"/></td>
+										</tr>
+									</table>
+								</div>
 							</div>
-							<div class="panel-body">
-
-							<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th class="col-md-5">Departure</th>
-										<th class="col-md-5">Destination</th>
-										<th class="col-md-4">Departure Date</th>
-										<th class="col-md-3">Departure Time</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><t t-esc="schedule.departure"/></td>
-										<td><t t-esc="schedule.destination"/></td>
-										<td><t t-esc="schedule.departure_date"/></td>
-										<td><t t-esc="schedule.departure_time"/></td>
-									</tr>
-								</tbody>
-							</table>
-							
+						
+							<div>
+								<h3 class="text-center">Schedule Information</h3>
+								<div>
+									<table class="table borderless">
+										<tr>
+											<td>Departure</td>
+											<td><t t-esc="schedule.departure.city"/></td>
+										</tr>
+										<tr>
+											<td>Destination</td> 
+											<td><t t-esc="schedule.destination.city"/></td>
+										</tr>
+										<tr>
+											<td>Departure Date</td>
+											<td><t t-esc="schedule.departure_date"/></td>
+										</tr>
+										<tr>
+											<td>Departure Time</td>
+											<td><t t-esc="schedule.departure_time"/></td>
+										</tr>
+										<tr>
+											<td>Pool</td>
+											<td>
+												<ul class="list-unstyled">
+													<t t-foreach="schedule.pool_list" t-as="schedule_item">
+														<li><t t-esc="schedule_item.name"/></li>
+													</t>
+												</ul>
+											</td>
+										</tr>
+									</table>
+								</div>
+								
 							</div>
-							
+									
 							<button class="btn btn-default">
 								Order
 							</button>
-						
+								
 						</div>
-                    </div>
-                </div>
-            </t>
+					</div>
+				</div>
+			</t>
 		</template>
 			
 	</data>

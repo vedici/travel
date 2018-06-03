@@ -2,3 +2,6 @@
     background-color: #f4511e; /* Orange */
     color: #ffffff;
 }
+.borderless td, .borderless th {
+    border: none;
+}

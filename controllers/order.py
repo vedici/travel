@@ -1,5 +1,6 @@
 from odoo import http
 from odoo.http import request
+
 #
 #	Website Travel untuk Proses Order
 #
@@ -18,10 +19,12 @@ class Order(http.Controller) :
 
 			partner = request.env['res.users'].browse(uid).partner_id
 			travels = request.env['travel.order'].search([('partner_id','=', partner.id)]) #search(['create_uid', '=', uid])
-
+#			base_uri = request.env['ir.config_parameter'].get_param('web.base.url')
+			
 			return request.render('travel.order', {
 				'partner' : partner,
 				'travels' : travels
+#				'base_uri' : base_uri
 			})
 
 		else:
@@ -46,15 +49,24 @@ class Order(http.Controller) :
 #	@http.route('/travel/schedule/<model("travel.schedule"):schedule>/', type='http', auth='public', methods=['GET'], website=True)
 	@http.route('/travel/schedule/<model("travel.schedule"):schedule>/', auth='public', website=True)
 	def web_schedule_item(self, schedule) :
+		
+		uid = request.uid
 
-		return request.render('travel.schedule-item', {
-			'schedule' : schedule
-		})
-
+		if uid is not None and isinstance(uid, int):
+			
+			partner = request.env['res.users'].browse(uid).partner_id
+		
+			return request.render('travel.schedule-item', {
+				'partner' : partner,
+				'schedule' : schedule
+			})
+			
+		else:
+			return request.render('travel.login')
 #
 # 	Page Bayar
 #
-	@http.route('/travel/orders/pay/', type='http', auth='public', methods=['POST'], website=True)
+	@http.route('/travel/orders/pay/', type='http', auth='user', methods=['POST'], website=True)
 	def web_pay_order(self, schedule) :
 
 		return request.render('travel.schedule_item', {
