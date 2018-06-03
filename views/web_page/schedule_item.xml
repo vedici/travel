@@ -9,8 +9,8 @@
 				    <div class="oe_structure">
 					<div class="container">
 						<br/>
-						<div class="panel panel-default o_panel s_panel">
-							<div class="panel-heading ">
+						<div class="jumbotron panel panel-default o_panel s_panel">
+							<div class="panel-heading">
 								<h3 class="panel-title o_default_snippet_text">Travel Schedule</h3>
 							</div>
 							<div class="panel-body">
@@ -18,7 +18,6 @@
 							<table class="table table-bordered">
 								<thead>
 									<tr>
-										<th class="col-md-1">No</th>
 										<th class="col-md-5">Departure</th>
 										<th class="col-md-5">Destination</th>
 										<th class="col-md-4">Departure Date</th>
