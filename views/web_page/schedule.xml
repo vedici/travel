@@ -23,6 +23,7 @@
 										<th class="col-md-5">Destination</th>
 										<th class="col-md-4">Departure Date</th>
 										<th class="col-md-3">Departure Time</th>
+										<th class="col-md-3">Order</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -35,6 +36,13 @@
 											<td><t t-esc="schedule.destination"/></td>
 											<td><t t-esc="schedule.departure_date"/></td>
 											<td><t t-esc="schedule.departure_time"/></td>
+											<td>
+												<a t-attf-href="/travel/schedule/{{slug(schedule)}}">
+													<button class="btn btn-default">
+													Order
+													</button>
+												</a>
+											</td>
 										</tr>
 									</t>
 								</tbody>
