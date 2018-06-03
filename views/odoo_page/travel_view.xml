@@ -21,7 +21,9 @@
 					<group name="group_top">
 						<h1 groups="base.group_user" colspan="4" attrs="{'invisible': [('state','!=','waiting')]}">Please pay before the specified date !</h1>
 						<group name="group_left">
-							<h1 attrs="{'invisible': [('state','!=','order')]}">New</h1>
+							<h1 attrs="{'invisible': [('state','=','waiting')]}">
+								<field name="name" readonly="1"/>
+							</h1>
 						</group>
 					</group>
 					<group name="group_bottom">

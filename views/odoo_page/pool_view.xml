@@ -6,16 +6,12 @@
     <field name="arch" type="xml">
       <form string="Pool">
         <sheet>
-          <group name="group_top">
-						<group name="group_left">
-							<h1>New Pool</h1>
-						</group>
-					</group>
-					<group name="group_bottom">
-						<group name="group_left">
-            	<field name="city"/>
-            </group>
-          </group>
+			<div class="oe_title" style="width: 300px;">
+				<label for="city" class="oe_edit_only"/>
+					<h1>
+						<field name="city"/>
+					</h1>
+			</div>
 		  <notebook>
 			<page name="pools_list" string="Pool">
 			<field name="pools"/>
