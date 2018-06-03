@@ -18,5 +18,6 @@
 				'security/ir.model.access.csv',
 				'security/travel_access_rule.xml',
 				'reports/travel_order_report.xml',
-				'reports/travel_order_template.xml'],
+				'reports/travel_order_template.xml',
+				'data/ir_sequence_data.xml'],
 }

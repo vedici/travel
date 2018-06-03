@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 #class TravelProduct(models.Model):
 #	_inherit = "product.product"
@@ -40,6 +40,14 @@ class Travel(models.Model):
             ],default='order')
 	
 	tree_seat_number = fields.One2many('travel.order.seat', 'order_id')
+	name = fields.Char(string='Travel Order Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
+
+	@api.model
+	def create(self, vals):
+		if vals.get('name', _('New')) == _('New'):
+			vals['name'] = self.env['ir.sequence'].next_by_code('travel.order') or _('New')
+			result = super(Travel, self).create(vals)
+		return result
 
 #	@api.depends('partner_id')
 #	def _get_user_partner(self):
