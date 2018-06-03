@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+	
+		<!-- Assets untuk FrontEnd -->
+		<template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" href="/travel/static/src/css/style.css" />
+				<script type="text/javascript" src="/travel/static/src/js/web.js"></script>
+			</xpath>
+		</template>
+	
+		<!-- Header -->
+		<template id="header" inherit_id="website.layout" name="Header Travel">
+			<xpath expr="//header//ul[@id='top_menu']/li" position="before">
+				<li>
+					<a href="/travel/orders">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Order</span>
+					</a>
+				</li>
+				<li>
+					<a href="/travel/schedules">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Schedules</span>
+					</a>
+				</li>
+				<li>
+					<a href="/travel/pools">
+						<span data-oe-model="website.menu" data-oe-id="5" data-oe-field="name" data-oe-type="char" data-oe-expression="submenu.name">Travel Pools</span>
+					</a>
+				</li>
+			</xpath>
+		</template>
+		
+		<!-- Footer -->
+		<template id="website.layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright">
+			<xpath expr="//footer" position="inside">
+				<div class="container mt16 mb8">
+					<div class="pull-right" t-ignore="true" t-if="not editable">
+						<a>Pesan Travel Anda Sekarang!</a>
+					</div>
+					<div class="pull-left text-muted">
+						Copyright &amp;copy; <span t-field="res_company.name">Kelompok IA</span>
+					</div>
+				</div>
+			</xpath>
+		</template>
+			
+	</data>
+</odoo>
