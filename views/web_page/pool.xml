@@ -17,7 +17,7 @@
 							<div class="panel panel-default o_panel s_panel">
 								<div class="panel-body">
 
-									<table class="table table-stripped">
+									<table class="table table-striped">
 										<thead>
 											<tr>
 												<th class="col-md-1">No</th>
