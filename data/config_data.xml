@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<record id="travel.travel_order" model="ir.model">
+			<field name="website_form_access">True</field>
+		</record>
+		
+		<function model="ir.model.fields" name="formbuilder_whitelist">
+			<value>travel.order</value>
+			<value eval="['name','schedule_id', 'departure', 'destination', 'departure_date', 'departure_time', 'tree_seat_number']"/>
+		</function>
+
+    </data>
+</odoo>

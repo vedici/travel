@@ -16,9 +16,11 @@
 				'views/web_page/schedule.xml',
 				'views/web_page/schedule_item.xml',
 				'views/web_page/order_success.xml',
+				'views/web_page/web_menu.xml',
 				'security/ir.model.access.csv',
 				'security/travel_access_rule.xml',
 				'reports/travel_order_report.xml',
 				'reports/travel_order_template.xml',
+#				'data/config_data.xml',
 				'data/ir_sequence_data.xml'],
 }

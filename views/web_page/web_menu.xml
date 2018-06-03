@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+		<record id="menu_travel_user_order" model="website.menu">
+			<field name="name">Your Travel Order</field>
+			<field name="url">/travel/orders</field>
+			<field name="parent_id" ref="website.main_menu"/>
+			<field name="sequence" type="int">50</field>
+		</record>
+		
+		<record id="menu_travel_schedules" model="website.menu">
+			<field name="name">Travel Schedules</field>
+			<field name="url">/travel/schedules</field>
+			<field name="parent_id" ref="website.main_menu"/>
+			<field name="sequence" type="int">50</field>
+		</record>
+
+		<record id="menu_travel_pools" model="website.menu">
+			<field name="name">Travel Pools</field>
+			<field name="url">/travel/pools</field>
+			<field name="parent_id" ref="website.main_menu"/>
+			<field name="sequence" type="int">50</field>
+		</record>
+		
+    </data>
+</odoo>

@@ -10,7 +10,7 @@
 			</xpath>
 		</template>
 	
-		<!-- Header -->
+		<!-- Header 
 		<template id="header" inherit_id="website.layout" name="Header Travel">
 			<xpath expr="//header//ul[@id='top_menu']/li" position="before">
 				<li>
@@ -29,7 +29,7 @@
 					</a>
 				</li>
 			</xpath>
-		</template>
+		</template> -->
 		
 		<!-- Footer -->
 		<template id="website.layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright">

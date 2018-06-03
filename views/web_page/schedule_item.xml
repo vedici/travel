@@ -94,8 +94,9 @@
 								<h3 class="text-center">Booking</h3>
 								<form method="post" class="s_website_form" action="/website_form/" data-model_name="travel.order" data-success_page="/travel/orders/pay/">
 
+									<input type="hidden" name="partner_id" class="o_website_from_input" t-att-value="partner.id"/>
 									<input type="hidden" name="departure.schedule" class="o_website_from_input" t-att-value="schedule.id"/>
-									
+	
 									<div class="form-group">
 										<label for="sel1">Pool Departure:</label>	
 										<select name="departure.pool_location" class="o_website_from_input form-control" id="sel1">
