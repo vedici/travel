@@ -21,10 +21,10 @@
 											<th class="col-md-1">No</th>
 											<th class="col-md-5">Departure</th>
 											<th class="col-md-5">Destination</th>
-											<th class="col-md-4">Departure Date</th>
-											<th class="col-md-6">Departure Pool</th>
-											<th class="col-md-6">Destination Pool</th>
-											<th class="col-md-3">Order</th>
+											<th class="col-md-6">Departure Date</th>
+											<th class="col-md-7">Departure Pool</th>
+											<th class="col-md-7">Destination Pool</th>
+											<th class="col-md-3"></th>
 										</tr>
 									</thead>
 									<tbody>

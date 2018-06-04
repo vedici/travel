@@ -14,6 +14,9 @@ class TravelSchedule(models.Model):
 	pool_list_dest = fields.One2many('travel.pool.line', 'schedule')
 	price = fields.Float('Price', required=True)
 
+	def get_max_seats(self):
+		return self.vehicle.seats;
+
 class PoolLine(models.Model):
 	_name = 'travel.pool.line'
 	schedule = fields.Many2one('travel.schedule', string="Schedule",ondelete='cascade')

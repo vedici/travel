@@ -12,8 +12,9 @@ from odoo import models, fields, api, _
 class SeatNumber(models.Model):
 	_name = 'travel.order.seat'
 	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (order_id, seat_number)', 'Seat have been booked')] 
-#	product_id = fields.Many2one('product.product')
+#	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (schedule_id, seat_number)', 'Seat have been booked')]
 	order_id = fields.Many2one('travel.order')
+#	schedule_id = fields.Many2one('travel.schedule')
 	seat_number = fields.Integer()
 
 class Travel(models.Model):
@@ -45,8 +46,11 @@ class Travel(models.Model):
 	@api.model
 	def create(self, vals):
 
-		if self.departure.get_schedule() == self.departure.get_schedule():
-			self.schedule_id = self.departure.get_schedule()
+#		schedule_dep = self.env["travel.pool.line"].browse(self._cr, self.env.uid, vals['departure']).get_schedule()
+#		schedule_dest = self.env["travel.pool.line"].browse(self._cr, self.env.uid, vals['destination']).get_schedule()
+
+#		if schedule_dep == schedule_dest:
+#			vals['schedule_id'] = schedule_dep
 
 		if vals.get('name', _('New')) == _('New'):
 			vals['name'] = self.env['ir.sequence'].next_by_code('travel.order') or _('New')
@@ -57,7 +61,10 @@ class Travel(models.Model):
 #	@api.depends('partner_id')
 #	def _get_user_partner(self):
 #		self.partner_id = self.env['res.users'].browse(self.env.uid).partner_id
-	
+
+	def get_cr(self):
+		return self._cr
+
 	def confirm(self):
 		self.write({'state': 'waiting'})
 		

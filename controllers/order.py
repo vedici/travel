@@ -1,5 +1,9 @@
+import json
+import array
+
 from odoo import http
 from odoo.http import request
+from odoo.exceptions import ValidationError
 
 #
 #	Website Travel untuk Proses Order
@@ -66,12 +70,42 @@ class Order(http.Controller) :
 #
 # 	Page Bayar
 #
-	@http.route('/travel/orders/pay/', type='http', auth='user', methods=['POST'], website=True)
-	def web_pay_order(self, schedule) :
-		partner = request.env['res.users'].browse(uid).partner_id
+	@http.route('/travel/schedule/<model("travel.schedule"):schedule>/pay', type='http', auth="user", methods=['POST'], website=True)
+	def web_pay_order(self, schedule, **kw) :
+
+#		kw['partner_id'] = request.env['res.users'].browse(request.uid).partner_id
+		kw['schedule_id'] = schedule.id
+		
+		seats = kw['seats'].split(',');
+
+#		if not all(isinstance(i, int) for i in [kw['schedule'], kw['departure'], kw['destination']]):
+#			return json.dumps(False)
+		
+#		data['schedule_id'] = kw['schedule']
+#		data['departure'] = kw['departure']
+#		data['destination'] = kw['destination']
+
+		travel_order = request.env['travel.order']
+		_cr = travel_order.get_cr()
+		
+		try:	
+			_cr.autocommit(False)
+			
+			order = travel_order.create(kw)
+
+			for seat in seats:
+				data['seat_number'] = seat
+				data['order_id'] = order.id
+				request.env['travel.order.seat'].create(data)
+				
+			_cr.commit()
+			
+		except ValidationError, e:
+			_cr.rollback()
+			return json.dumps({'error_fields' : e.args[0]})
 
 		return request.render('travel.order_success')
-		
+
 #
 # 	Mendapatkan List Pool 
 #

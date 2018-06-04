@@ -98,11 +98,13 @@
 							
 							<div>
 								<h3 class="text-center">Booking</h3>
-								<form method="post" class="s_website_form" action="/website_form/" data-model_name="travel.order" data-success_page="/travel/orders/pay/">
-
+								<form method="post" action="pay/">
+									
+									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+									
 									<div class="form-group">
 										<label for="sel1">Pool Departure:</label>	
-										<select name="departure.pool_location" class="o_website_from_input form-control" id="sel1">
+										<select name="departure" class="form-control" id="sel1">
 											<t t-foreach="schedule.pool_list_dep" t-as="schedule_item">
 												<option t-att-value="schedule_item.id">
 													<t t-esc="schedule_item.name" />
@@ -113,7 +115,7 @@
 									
 									<div class="form-group">
 										<label for="sel2">Pool Destination:</label>
-										<select name="destination.pool_location" class="o_website_from_input form-control" id="sel2">
+										<select name="destination" class="form-control" id="sel2">
 											<t t-foreach="schedule.pool_list_dest" t-as="schedule_item">
 												<option t-att-value="schedule_item.id">
 													<t t-esc="schedule_item.name" />
@@ -124,14 +126,10 @@
 
 									<div class="form-group">
 										<label for="seats">Seats</label>
-										<input type="text" id="seats" class="o_website_from_input form-control" name="tree_seat_number[]"/>
+										<input type="text" id="seats" class="form-control" name="seats"/>
 									</div>
 						
-									<button type="submit" class="o_website_form_send btn btn-default btn-lg">Order</button>
-									
-									<div id="o_website_form_result">
-									
-									</div>
+									<button type="submit" class="btn btn-default btn-lg">Order</button>
 									
 									<br/><br/>
 									
