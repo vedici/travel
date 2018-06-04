@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 class TravelSchedule(models.Model):
 	_name = 'travel.schedule'
@@ -13,6 +13,15 @@ class TravelSchedule(models.Model):
 	pool_list_dep = fields.One2many('travel.pool.line', 'schedule')
 	pool_list_dest = fields.One2many('travel.pool.line', 'schedule')
 	price = fields.Float('Price', required=True)
+	name = fields.Char(string='Schedule Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New Schedule'))
+
+	@api.model
+	def create(self, vals):
+		if vals.get('name', _('New Schedule')) == _('New Schedule'):
+			vals['name'] = self.env['ir.sequence'].next_by_code('travel.schedule') or _('New Schedule')
+			result = super(TravelSchedule, self).create(vals)
+
+		return result
 
 	def get_max_seats(self):
 		return self.vehicle.seats;

@@ -9,6 +9,14 @@
             <field name="prefix">TO</field>
             <field name="padding">3</field>
         </record>
+		
+		<!-- Sequences for travel.schedule -->
+        <record id="seq_travel_schedule" model="ir.sequence">
+            <field name="name">Travel Schedule</field>
+            <field name="code">travel.schedule</field>
+            <field name="prefix">SCH</field>
+            <field name="padding">3</field>
+        </record>
 
     </data>
 </odoo>
