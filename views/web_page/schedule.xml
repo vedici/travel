@@ -22,8 +22,8 @@
 											<th class="col-md-5">Departure</th>
 											<th class="col-md-5">Destination</th>
 											<th class="col-md-4">Departure Date</th>
-											<th class="col-md-3">Departure Time</th>
-											<th class="col-md-4">Pool</th>
+											<th class="col-md-6">Departure Pool</th>
+											<th class="col-md-6">Destination Pool</th>
 											<th class="col-md-3">Order</th>
 										</tr>
 									</thead>
@@ -36,11 +36,17 @@
 												<td><t t-esc="schedule.departure.city"/></td>
 												<td><t t-esc="schedule.destination.city"/></td>
 												<td><t t-esc="schedule.departure_date"/></td>
-												<td><t t-esc="schedule.departure_time"/></td>
 												<td>
 													<ul class="list-unstyled">
-														<t t-foreach="schedule.pool_list" t-as="schedule_item">
-															<li><t t-esc="schedule_item.name"/></li>
+														<t t-foreach="schedule.pool_list_dep" t-as="schedule_item">
+															<li><t t-esc="schedule_item.name"/> At <t t-esc="schedule_item.departure_perpool"/></li>
+														</t>
+													</ul>
+												</td>
+												<td>
+													<ul class="list-unstyled">
+														<t t-foreach="schedule.pool_list_dest" t-as="schedule_item">
+															<li><t t-esc="schedule_item.name"/> At <t t-esc="schedule_item.departure_perpool"/></li>
 														</t>
 													</ul>
 												</td>

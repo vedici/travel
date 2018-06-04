@@ -68,6 +68,7 @@ class Order(http.Controller) :
 #
 	@http.route('/travel/orders/pay/', type='http', auth='user', methods=['POST'], website=True)
 	def web_pay_order(self, schedule) :
+		partner = request.env['res.users'].browse(uid).partner_id
 
 		return request.render('travel.order_success')
 		
