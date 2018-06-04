@@ -44,7 +44,7 @@
 								</tree>
 							</field>
 						</page>
-                    </notebook>
+					</notebook>
 				</sheet>
 			</form>
 		</field>
@@ -63,7 +63,7 @@
 			</tree>
 		</field>
 	</record>
-	
+
 	<record id="view_filter_travel_order" model="ir.ui.view">
 		<field name="name">Travel Order Filter</field>
 		<field name="model">travel.order</field>
