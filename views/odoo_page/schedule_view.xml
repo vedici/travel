@@ -19,18 +19,25 @@
 						</group>
 						<group name="group_right">
 							<field name="departure_date"/>
-							<field name="departure_time" widget="float_time"/>
 						</group>
 					</group>
 					<notebook>
-						<page name="pool" string="Pool">
-							<field name="pool_list">
+						<page name="pool_dep" string="Pool Departure">
+							<field name="pool_list_dep">
 								<tree string="Pool" editable="bottom">
-									<field name="pool_location"/>
+									<field name="pool_location" domain="[('city_ids', '=', parent.departure)]"/>
+									<field name="departure_perpool" widget="float_time"/>
 								</tree>
 							</field>
 						</page>
-                    </notebook>
+						<page name="pool_dest" string="Pool Destination">
+							<field name="pool_list_dest">
+								<tree string="Pool" editable="bottom">
+									<field name="pool_location" domain="[('city_ids', '=', parent.destination)]"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
 				</sheet>
 			</form>
 		</field>
@@ -44,7 +51,6 @@
 				<field name="departure"/>
 				<field name="destination"/>
 				<field name="departure_date"/>
-				<field name="departure_time"/>
 			</tree>
 		</field>
 	</record>
