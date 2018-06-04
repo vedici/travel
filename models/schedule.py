@@ -12,11 +12,12 @@ class TravelSchedule(models.Model):
 	order_list = fields.One2many('travel.order', 'schedule_id')
 	pool_list_dep = fields.One2many('travel.pool.line', 'schedule')
 	pool_list_dest = fields.One2many('travel.pool.line', 'schedule')
+	price = fields.Float('Price', required=True)
 
 class PoolLine(models.Model):
 	_name = 'travel.pool.line'
-	schedule = fields.Many2one('travel.schedule', string="Schedule")
-	pool_location = fields.Many2one('travel.pool.place',ondelete='cascade')
+	schedule = fields.Many2one('travel.schedule', string="Schedule",ondelete='cascade')
+	pool_location = fields.Many2one('travel.pool.place')
 	name = fields.Char(compute="_compute_pool_name", store=False)
 	departure_perpool = fields.Float('Departure Time')
 

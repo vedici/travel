@@ -19,6 +19,7 @@
 						</group>
 						<group name="group_right">
 							<field name="departure_date"/>
+							<field name="price"/>
 						</group>
 					</group>
 					<notebook>
