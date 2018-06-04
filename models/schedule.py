@@ -26,6 +26,9 @@ class PoolLine(models.Model):
 		for record in self:
 			record.name = record.pool_location.city_ids.city + '/' + record.pool_location.address
 
+	def get_schedule(self):
+		return self.schedule
+
 #class Vehicle(models.Model):
 #	_inherit = 'fleet.vehicle'
 

@@ -44,9 +44,14 @@ class Travel(models.Model):
 
 	@api.model
 	def create(self, vals):
+
+		if self.departure.get_schedule() == self.departure.get_schedule():
+			self.schedule_id = self.departure.get_schedule()
+
 		if vals.get('name', _('New')) == _('New'):
 			vals['name'] = self.env['ir.sequence'].next_by_code('travel.order') or _('New')
 			result = super(Travel, self).create(vals)
+			
 		return result
 
 #	@api.depends('partner_id')
