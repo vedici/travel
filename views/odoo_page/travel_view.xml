@@ -19,7 +19,8 @@
 				</header>
 				<sheet>
 					<group name="group_top">
-						<h1 groups="base.group_user" colspan="4" attrs="{'invisible': [('state','!=','waiting')]}">Please pay before the specified date !</h1>
+						<h1 groups="base.group_user" colspan="4" attrs="{'invisible': [('state','!=','waiting')]}">Price: <field name="price_travel" attrs="{'invisible': [('state','!=','waiting')],'readonly': [('state', '=', 'travel')]}"/>
+						Please pay before the specified date !</h1>
 						<group name="group_left">
 							<h1 attrs="{'invisible': [('state','=','waiting')]}">
 								<field name="name" readonly="1"/>
@@ -34,7 +35,6 @@
 						<group name="group_right">
 							<field name="departure_date" attrs="{'readonly': [('state', '!=', 'order')]}"/>
 							<field name="departure_time" widget="float_time" attrs="{'invisible': [('state','=','waiting')],'readonly': [('state', '=', 'travel')]}"/>
-							<field name="price_travel" attrs="{'invisible': [('state','=','waiting')],'readonly': [('state', '=', 'travel')]}"/>
 						</group>
 					</group>
 					<notebook attrs="{'invisible': [('state','=','waiting')]}">

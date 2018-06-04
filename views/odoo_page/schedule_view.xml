@@ -8,7 +8,7 @@
 				<sheet>
 					<group name="group_top">
 						<group name="group_left">
-							<h1>New Schedule</h1>
+							<h1><field name="name" readonly="1"/></h1>
 						</group>
 					</group>
 					<group name="group_bottom">
