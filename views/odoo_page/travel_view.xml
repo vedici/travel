@@ -34,6 +34,7 @@
 						<group name="group_right">
 							<field name="departure_date" attrs="{'readonly': [('state', '!=', 'order')]}"/>
 							<field name="departure_time" widget="float_time" attrs="{'invisible': [('state','=','waiting')],'readonly': [('state', '=', 'travel')]}"/>
+							<field name="price_travel" attrs="{'invisible': [('state','=','waiting')],'readonly': [('state', '=', 'travel')]}"/>
 						</group>
 					</group>
 					<notebook attrs="{'invisible': [('state','=','waiting')]}">
@@ -44,7 +45,7 @@
 								</tree>
 							</field>
 						</page>
-                    </notebook>
+					</notebook>
 				</sheet>
 			</form>
 		</field>
@@ -63,7 +64,7 @@
 			</tree>
 		</field>
 	</record>
-	
+
 	<record id="view_filter_travel_order" model="ir.ui.view">
 		<field name="name">Travel Order Filter</field>
 		<field name="model">travel.order</field>
