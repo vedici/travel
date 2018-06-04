@@ -73,28 +73,26 @@ class Order(http.Controller) :
 	@http.route('/travel/schedule/<model("travel.schedule"):schedule>/pay', type='http', auth="user", methods=['POST'], website=True)
 	def web_pay_order(self, schedule, **kw) :
 
-#		kw['partner_id'] = request.env['res.users'].browse(request.uid).partner_id
-		kw['schedule_id'] = schedule.id
-		
-		seats = kw['seats'].split(',');
+		data_order = {}
+		data_order['schedule_id'] = schedule.id
+		data_order['departure'] = int(kw['departure'])
+		data_order['departure_date'] = schedule.departure_date
+		data_order['departure_time'] = request.env['travel.pool.line'].browse(data_order['departure']).departure_perpool
+		data_order['destination'] = int(kw['destination'])
 
-#		if not all(isinstance(i, int) for i in [kw['schedule'], kw['departure'], kw['destination']]):
-#			return json.dumps(False)
-		
-#		data['schedule_id'] = kw['schedule']
-#		data['departure'] = kw['departure']
-#		data['destination'] = kw['destination']
+		seats = kw['seats'].split(',');
 
 		travel_order = request.env['travel.order']
 		_cr = travel_order.get_cr()
-		
+	
 		try:	
 			_cr.autocommit(False)
-			
-			order = travel_order.create(kw)
+
+			order = travel_order.create(data_order)
 
 			for seat in seats:
-				data['seat_number'] = seat
+				data = {}
+				data['seat_number'] = int(seat)
 				data['order_id'] = order.id
 				request.env['travel.order.seat'].create(data)
 				
