@@ -1,5 +1,5 @@
-import json
-import array
+#import json
+#import array
 
 from odoo import http
 from odoo.http import request
@@ -97,12 +97,19 @@ class Order(http.Controller) :
 				request.env['travel.order.seat'].create(data)
 				
 			_cr.commit()
-			
+
 		except ValidationError, e:
 			_cr.rollback()
-			return json.dumps({'error_fields' : e.args[0]})
+			
+			return request.render('travel.order_success', {
+				'title': 'Order Failed!',
+				'message': e.args[0]
+			})
 
-		return request.render('travel.order_success')
+		return request.render('travel.order_success', {
+			'title': 'Order Success!',
+			'message': 'Please Pay Your Invoice'
+		})
 
 #
 # 	Mendapatkan List Pool 

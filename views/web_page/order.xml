@@ -44,7 +44,8 @@
 								<table class="table table-bordered">
 									<thead>
 										<tr>
-											<th class="col-md-1">No</th>
+											<th class="col-md-2">No Order</th>
+											<th class="col-md-4">Invoice</th>
 											<th class="col-md-5">Departure</th>
 											<th class="col-md-5">Destination</th>
 											<th class="col-md-4">Departure Date</th>
@@ -55,11 +56,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										<t t-set="i" t-value="0"/>
 										<t t-foreach="travels" t-as="travel">
-											<t t-set="i" t-value="i+1"/>
+											<t t-set="invoice" t-value="travel.price_travel * len(travel.tree_seat_number)"/>
 											<tr>
-												<td> <span t-esc="i"/> </td>
+												<td> 
+													<t t-esc="travel.name"/> 
+												</td>
+												<td>
+													<t t-esc="invoice"/> <br/>
+													( <t t-esc="travel.price_travel"/> x <t t-esc="len(travel.tree_seat_number)"/> )
+												</td>
 												<td>
 													<ul>
 														<t t-esc="travel.departure.name"/>

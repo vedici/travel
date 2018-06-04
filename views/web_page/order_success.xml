@@ -9,8 +9,8 @@
                 <div class="oe_structure">
 					<div class="container">
 					
-						<h1>Order Success!</h1>
-						<p>Please Pay Your Invoice</p>
+						<h1><t t-esc="title"/></h1>
+						<p><t t-esc="message"/></p>
 
 					</div>
                 </div>
