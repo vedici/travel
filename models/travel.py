@@ -28,6 +28,8 @@ class Travel(models.Model):
 
 	isPay = fields.Boolean(default=False)
 
+	price_travel = fields.Float('Price',required=True,related='departure.schedule.price')
+	
 	departure = fields.Many2one('travel.pool.line',required=True)
 	destination = fields.Many2one('travel.pool.line',required=True)
 
