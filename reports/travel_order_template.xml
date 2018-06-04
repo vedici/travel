@@ -30,19 +30,24 @@
 						<div class="page">
 	            <div class="oe_structure"/>
 							<div class="row">
-								<div class="col-xs-6" style="font-size: 35px !important;" >
+								<div class="col-xs-6" style="font-size: 15px !important;" >
 									<p>
 									  Departure : <span t-field="doc.departure"/><br/>
 										Destination : <span t-field="doc.destination"/><br/>
-										Car Type : <span t-field="doc.vehicle"/>
+										Car Type : <span t-field="doc.departure.schedule.vehicle"/>
 									</p>
 								</div>
-								<div class="col-xs-6" style="font-size: 35px !important;" >
+								<div class="col-xs-6" style="font-size: 15px !important;" >
 									<p>
 										Departure Date : <span t-field="doc.departure_date"/><br/>
 										Departure Time : <span t-field="doc.departure_time"/><br/>
-										Seat Number : <p t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_number"/>, </p>
+										Price : <span t-field="doc.price_travel"/><br/>
 									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12" style="font-size: 15px !important;" >
+									Seat Number : <span t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_number"/>, </span>
 								</div>
 							</div>
 						</div>
