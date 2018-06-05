@@ -11,7 +11,7 @@ class TravelSchedule(models.Model):
 	vehicle = fields.Many2one('fleet.vehicle', required=True)
 	order_list = fields.One2many('travel.order', 'schedule_id')
 	pool_list_dep = fields.One2many('travel.pool.line', 'schedule')
-	pool_list_dest = fields.One2many('travel.pool.line', 'schedule')
+	pool_list_dest = fields.One2many('travel.pool.line', 'schedule_dest')
 	price = fields.Float('Price', required=True)
 	name = fields.Char(string='Schedule Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New Schedule'))
 
@@ -29,6 +29,7 @@ class TravelSchedule(models.Model):
 class PoolLine(models.Model):
 	_name = 'travel.pool.line'
 	schedule = fields.Many2one('travel.schedule', string="Schedule",ondelete='cascade')
+	schedule_dest = fields.Many2one('travel.schedule', string="Schedule",ondelete='cascade')
 	pool_location = fields.Many2one('travel.pool.place')
 	name = fields.Char(compute="_compute_pool_name", store=False)
 	departure_perpool = fields.Float('Departure Time')
