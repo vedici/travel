@@ -53,6 +53,7 @@
 											<th class="col-md-2">State</th>
 											<th class="col-md-3">Vehicle</th>
 											<th class="col-md-3">Seat Number</th>
+											<th class="col-md-4">Report</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -86,6 +87,13 @@
 															<li><t t-esc="seat.seat_number"/></li>
 														</t>
 													</ul>
+												</td>
+												<td>
+													<a t-att-href="'/report/pdf/travel.report_template/%s/' % travel.id">
+														<button class="btn btn-default">
+															Download
+														</button>
+													</a>
 												</td>
 											</tr>
 										</t>

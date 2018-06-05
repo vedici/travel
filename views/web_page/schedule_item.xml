@@ -43,6 +43,10 @@
 								<div>
 									<table class="table borderless">
 										<tr>
+											<td>Price per Seat</td>
+											<td><t t-esc="schedule.price"/></td>
+										</tr>
+										<tr>
 											<td>Departure</td>
 											<td><t t-esc="schedule.departure.city"/></td>
 										</tr>
