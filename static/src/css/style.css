@@ -7,3 +7,25 @@
 .borderless td, .borderless th {
     border: none;
 }
+.navbar {
+    margin-bottom: 0;
+	background-image: -moz-linear-gradient( 135deg, rgb(244,202,216) 0%, rgb(37,98,242) 35%, rgb(23,6,166) 100%);
+	background-image: -webkit-linear-gradient( 135deg, rgb(11,64,54) 0%, rgb(2,115,83) 35%, rgb(3,184,120) 100%);
+	background-image: -ms-linear-gradient( 135deg, rgb(244,202,216) 0%, rgb(37,98,242) 35%, rgb(23,6,166) 100%);
+    z-index: 9999;
+    border: 0;
+    border-radius: 0;
+}
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #0b4036 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}

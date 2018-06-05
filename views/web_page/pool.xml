@@ -15,9 +15,9 @@
 						<div class="col-md-8 col-md-offset-2">
 						
 							<div class="panel panel-default o_panel s_panel">
-								<div class="panel-body">
+								<div class="panel-body table-responsive">
 
-									<table class="table table-striped">
+									<table class="table table-striped table-hover">
 										<thead>
 											<tr>
 												<th class="col-md-1">No</th>

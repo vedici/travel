@@ -2,16 +2,13 @@
 <odoo>
 	<data>
 
-		<!-- Halaman Login -->
+		<!-- Halaman Message -->
 		<template id="order_success">
 			<t t-call="website.layout">
-                <t t-set="title">Order Success</t>
                 <div class="oe_structure">
 					<div class="container">
-					
 						<h1><t t-esc="title"/></h1>
 						<p><t t-esc="message"/></p>
-
 					</div>
                 </div>
             </t>
