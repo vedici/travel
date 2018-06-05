@@ -11,7 +11,7 @@ from odoo import models, fields, api, _
 
 class SeatNumber(models.Model):
 	_name = 'travel.order.seat'
-	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (order_id, seat_number)', 'Seat have been booked')] 
+	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (order_id, seat_number)', 'Seat have been booked')]
 #	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (schedule_id, seat_number)', 'Seat have been booked')]
 	order_id = fields.Many2one('travel.order')
 #	schedule_id = fields.Many2one('travel.schedule')
@@ -30,7 +30,7 @@ class Travel(models.Model):
 	isPay = fields.Boolean(default=False)
 
 	price_travel = fields.Float('Price',required=True,related='departure.schedule.price')
-	
+
 	departure = fields.Many2one('travel.pool.line',required=True)
 	destination = fields.Many2one('travel.pool.line',required=True)
 
@@ -84,7 +84,7 @@ class Travel(models.Model):
 	def destination_onchange(self):
 	#Pemilihan lokasi tujuan (Destination) berdasarkan keberangkatan (Departure) pada jadwal yang sama
 		res = {}
-		res['domain'] = {'destination': ['&',('schedule', '=', self.departure.schedule.id),('pool_location', '!=', self.departure.pool_location.id)]}
+		res['domain'] = {'destination': ['&',('schedule', '=', self.departure.schedule.id),('pool_location', '!=', self.departure.pool_location.id),('pool_location.city_ids','!=',self.departure.pool_location.city_ids.id)]}
 		return res
 
 #	@api.onchange('departure', 'destination', 'departure_date', 'departure_time')
