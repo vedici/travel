@@ -87,6 +87,13 @@ class Travel(models.Model):
 		res['domain'] = {'destination': ['&',('schedule', '=', self.departure.schedule.id),('pool_location', '!=', self.departure.pool_location.id),('pool_location.city_ids','!=',self.departure.pool_location.city_ids.id)]}
 		return res
 
+	@api.onchange('destination')
+	def destination_onchange(self):
+	#Pemilihan lokasi keberangkatan (Departure) berdasarkan tujuan (Destination) pada jadwal yang sama
+		res = {}
+		res['domain'] = {'departure': ['|',('schedule', '=', self.destination.schedule.id),('pool_location', '!=', self.destination.pool_location.id),('pool_location.city_ids','!=',self.destination.pool_location.city_ids.id)]}
+		return res
+
 #	@api.onchange('departure', 'destination', 'departure_date', 'departure_time')
 #	def actionChange(self):
 #		pass
