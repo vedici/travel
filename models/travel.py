@@ -11,10 +11,10 @@ from odoo import models, fields, api, _
 
 class SeatNumber(models.Model):
 	_name = 'travel.order.seat'
-	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (order_id, seat_number)', 'Seat have been booked')]
-#	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (schedule_id, seat_number)', 'Seat have been booked')]
+#	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (order_id, seat_number)', 'Seat have been booked')]
+	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (schedule_id, seat_number)', 'Seat have been booked')]
 	order_id = fields.Many2one('travel.order')
-#	schedule_id = fields.Many2one('travel.schedule')
+	schedule_id = fields.Many2one('travel.schedule', default=lambda self: self.order_id.schedule_id)
 	seat_number = fields.Integer()
 
 class Travel(models.Model):
