@@ -78,9 +78,9 @@
 												<td><t t-esc="travel.state"/></td>
 												<td><t t-esc="travel.schedule_id.vehicle.name"/></td>
 												<td>
-													<ul class="list-unstyled">
+													<ul class="list-inline">
 														<t t-foreach="travel.tree_seat_number" t-as="seat">
-															<li><t t-esc="seat.seat_number"/></li>
+															<li><t t-esc="seat.seat_number"/> | </li>
 														</t>
 													</ul>
 												</td>
