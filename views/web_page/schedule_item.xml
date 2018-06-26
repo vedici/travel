@@ -47,10 +47,6 @@
 								<div class="panel-body table-responsive">
 									<table class="table borderless">
 										<tr>
-											<td>Price per Seat</td>
-											<td><t t-esc="schedule.price"/></td>
-										</tr>
-										<tr>
 											<td>Departure</td>
 											<td><t t-esc="schedule.departure.city"/></td>
 										</tr>
@@ -98,7 +94,7 @@
 											<td><t t-esc="schedule.vehicle.name"/></td>
 										</tr>
 										<tr>
-											<td>Seats</td>
+											<td>Total Avaiable Seats</td>
 											<td><t t-esc="schedule.vehicle.seats"/></td>
 										</tr>
 									</table>
@@ -142,8 +138,16 @@
 									<div class="form-inline col-md-8 col-md-offset-2 center-block">
 									
 										<div class="form-group col-md-6">
-											<label for="seats">Seats (e.g : 2,3)</label>
-											<input type="text" id="seats" class="form-control" name="seats"/>
+											<label for="seats">Seats</label>
+								
+											<select multiple="multiple" id="seats" class="form-control" name="seats">
+												<t t-foreach="schedule.seat_list" t-as="seat_item">
+													<option t-att-value="seat_item.id">
+														<t t-esc="seat_item.name" />
+													</option>
+												</t>
+											</select>
+										
 										</div>
 										
 										<div class="col-md-6 text-center">

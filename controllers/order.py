@@ -5,6 +5,15 @@ from odoo.http import request
 from odoo.exceptions import ValidationError
 
 #
+#	Custom Error
+#
+class SeatBookedError(Exception):
+	def __init__(self, value):
+		self.value = value
+	def __str__(self):
+		return repr(self.value)
+
+#
 #	Website Travel untuk Proses Order
 #
 class Order(http.Controller) :
@@ -37,8 +46,6 @@ class Order(http.Controller) :
 		data_order['departure_time'] = request.env['travel.pool.line'].browse(data_order['departure']).departure_perpool
 		data_order['destination'] = int(kw['destination'])
 
-		seats = kw['seats'].split(',');
-
 		travel_order = request.env['travel.order']
 		_cr = travel_order.get_cr()
 	
@@ -47,12 +54,17 @@ class Order(http.Controller) :
 
 			order = travel_order.create(data_order)
 
-			for seat in seats:
-				data = {}
-				data['seat_number'] = int(seat)
-				data['order_id'] = order.id
-				request.env['travel.order.seat'].create(data)
+			for seat in kw['seats']:
+				data = {'order_id' : order.id, 'seat_list' : seat}
+				seat_line = request.env['travel.seat.line']
 				
+				if seat_line.order_id is None:
+					raise SeatBookedError('Seat %s Have Been Booked!' % seat)
+
+				seat_line.create(data)
+
+			travel_order.write(order)
+
 			_cr.commit()
 
 		except ValidationError, e:
