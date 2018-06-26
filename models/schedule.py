@@ -12,6 +12,7 @@ class TravelSchedule(models.Model):
 	order_list = fields.One2many('travel.order', 'schedule_id')
 	pool_list_dep = fields.One2many('travel.pool.line', 'schedule')
 	pool_list_dest = fields.One2many('travel.pool.line', 'schedule_dest')
+	seat_list = fields.One2many('travel.seat', 'schedule_seat')
 	price = fields.Float('Price', required=True)
 	name = fields.Char(string='Schedule Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New Schedule'))
 
@@ -41,6 +42,14 @@ class PoolLine(models.Model):
 
 	def get_schedule(self):
 		return self.schedule
+
+class VehicleSeat(models.Model):
+	_name = 'travel.seat'
+
+	number_seat = fields.Integer('Number Seat')
+	price_perseat = fields.Float('Price')
+	schedule_seat = fields.Many2one('travel.schedule', string="Schedule",ondelete='cascade')
+	is_booked = fields.Boolean('Is Booked?',default=False)
 
 #class Vehicle(models.Model):
 #	_inherit = 'fleet.vehicle'
