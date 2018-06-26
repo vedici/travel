@@ -19,8 +19,7 @@ class TravelOrder(models.Model):
 	state = fields.Selection([
             ('order', 'Order'),
             ('waiting', 'Waiting Payment'),
-            ('travel', 'Travel Order'),
-			('cancel', 'Travel Canceled')
+            ('travel', 'Travel Order')
             ],default='order')
 
 	tree_seat_number = fields.One2many('travel.seat.line', 'order_id')
@@ -52,13 +51,13 @@ class TravelOrder(models.Model):
 		return self._cr
 
 	def confirm(self):
-		self.write({'state': 'waiting'}, context=self._context)
+		self.write({'state' : 'waiting'})
 
 	def validate(self):
-		self.write({'state': 'travel'}, context=self._context)
+		self.write({'state' : 'travel'})
 
 	def cancel(self):
-		self.write({'state': 'cancel'}, context=self._context)
+		self.write({'state' : 'order'})
 
 	@api.onchange('departure')
 	def destination_onchange(self):
