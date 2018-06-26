@@ -52,13 +52,13 @@ class TravelOrder(models.Model):
 		return self._cr
 
 	def confirm(self):
-		self.write({'state': 'waiting'}, context=context)
+		self.write({'state': 'waiting'}, context=self._context)
 
 	def validate(self):
-		self.write({'state': 'travel'}, context=context)
+		self.write({'state': 'travel'}, context=self._context)
 
 	def cancel(self):
-		self.write({'state': 'cancel'}, context=context)
+		self.write({'state': 'cancel'}, context=self._context)
 
 	@api.onchange('departure')
 	def destination_onchange(self):
