@@ -12,7 +12,7 @@ class TravelSchedule(models.Model):
 	order_list = fields.One2many('travel.order', 'schedule_id')
 	pool_list_dep = fields.One2many('travel.pool.line', 'schedule')
 	pool_list_dest = fields.One2many('travel.pool.line', 'schedule_dest')
-	seat_list = fields.One2many('travel.seat', 'schedule_seat')
+	seat_list = fields.One2many('travel.seat', 'schedule_id')
 	price = fields.Float('Price', required=True)
 	name = fields.Char(string='Schedule Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New Schedule'))
 
@@ -45,11 +45,14 @@ class PoolLine(models.Model):
 
 class VehicleSeat(models.Model):
 	_name = 'travel.seat'
+#	_sql_constraints = [('travel_seat_unique', 'UNIQUE (number_seat)', 'Seat have been booked')]
+	schedule_id = fields.Many2one('travel.schedule', string="Schedule", ondelete='cascade')
+	order_id = fields.Many2one('travel.order')
+	seat_number = fields.Integer('Seat Number')
+	price = fields.Float('Price')
 
-	number_seat = fields.Integer('Number Seat')
-	price_perseat = fields.Float('Price')
-	schedule_seat = fields.Many2one('travel.schedule', string="Schedule",ondelete='cascade')
-	is_booked = fields.Boolean('Is Booked?',default=False)
+	def is_booked(self):
+		return self.order_id == None
 
 #class Vehicle(models.Model):
 #	_inherit = 'fleet.vehicle'

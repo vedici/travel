@@ -41,8 +41,8 @@
 						<page name="seat_list_number" string="Seat Number">
 							<field name="seat_list">
 								<tree string="Seat" editable="bottom">
-									<field name="number_seat"/>
-									<field name="price_perseat"/>
+									<field name="seat_number"/>
+									<field name="price"/>
 								</tree>
 							</field>
 						</page>

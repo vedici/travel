@@ -40,6 +40,7 @@
 							<field name="tree_seat_number" nolabel="1" colspan="1" attrs="{'readonly': [('state', '=', 'travel')]}">
 								<tree string="Tree String" editable="bottom">
 									<field name="seat_number"/>
+									<field name="price" attrs="{'readonly': [('state', '=', 'travel'), ('state','=','waiting')]}"/>
 								</tree>
 							</field>
 						</page>

@@ -9,13 +9,13 @@ from odoo import models, fields, api, _
 #	vehicle = fields.Char('Vehicle', required=True)
 #	seat_id = fields.One2many('product_id')
 
-class SeatNumber(models.Model):
-	_name = 'travel.order.seat'
+#class SeatNumber(models.Model):
+#	_name = 'travel.order.seat'
 #	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (order_id, seat_number)', 'Seat have been booked')]
-	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (schedule_id, seat_number)', 'Seat have been booked')]
-	order_id = fields.Many2one('travel.order')
-	schedule_id = fields.Many2one('travel.schedule', default=lambda self: self.order_id.schedule_id)
-	seat_number = fields.Integer()
+#	_sql_constraints = [('travel_order_seat_unique', 'UNIQUE (schedule_id, seat_number)', 'Seat have been booked')]
+#	order_id = fields.Many2one('travel.order')
+#	schedule_id = fields.Many2one('travel.schedule', default=lambda self: self.order_id.schedule_id)
+#	seat_number = fields.Integer()
 
 class Travel(models.Model):
 	_name = 'travel.order'
@@ -42,7 +42,7 @@ class Travel(models.Model):
             ('travel', 'Travel Order'),
             ],default='order')
 
-	tree_seat_number = fields.One2many('travel.order.seat', 'order_id')
+	tree_seat_number = fields.One2many('travel.seat', 'order_id')
 	name = fields.Char(string='Travel Order Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
 
 	@api.model
