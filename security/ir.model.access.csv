@@ -1,7 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_travel_order_seat_group_user,travel.order.seat.customer,model_travel_order_seat,base.group_user,1,1,1,1
+access_travel_order_seat_group_user,travel.order.seat.customer,model_travel_seat,base.group_user,1,1,0,0
 access_travel_order_group_user,travel.order.customer,model_travel_order,base.group_user,1,1,1,1
 access_travel_pool_city_group_user,travel.pool.city.customer,model_travel_pool_city,base.group_user,1,1,0,0
 access_travel_pool_place_group_user,travel.pool.place.customer,model_travel_pool_place,base.group_user,1,1,0,0
 access_travel_schedule_group_user,travel.schedule.customer,model_travel_schedule,base.group_user,1,1,0,0
 access_travel_pool_line_group_user,travel.pool.line.customer,model_travel_pool_line,base.group_user,1,1,0,0
+access_travel_seat_line_group_user,travel.seat.line.customer,model_travel_seat_line,base.group_user,1,1,0,0
