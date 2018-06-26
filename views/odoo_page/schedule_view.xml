@@ -15,11 +15,10 @@
 						<group name="group_left">
 							<field name="departure"/>
 							<field name="destination"/>
-							<field name="vehicle"/>
 						</group>
 						<group name="group_right">
 							<field name="departure_date"/>
-							<field name="price"/>
+							<field name="vehicle"/>
 						</group>
 					</group>
 					<notebook>

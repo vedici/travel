@@ -13,7 +13,7 @@ class TravelSchedule(models.Model):
 	pool_list_dep = fields.One2many('travel.pool.line', 'schedule')
 	pool_list_dest = fields.One2many('travel.pool.line', 'schedule_dest')
 	seat_list = fields.One2many('travel.seat', 'schedule_id')
-	price = fields.Float('Price', required=True)
+	#price = fields.Float('Price', required=True)
 	name = fields.Char(string='Schedule Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New Schedule'))
 
 	@api.model
@@ -43,18 +43,31 @@ class PoolLine(models.Model):
 	def get_schedule(self):
 		return self.schedule
 
+class VehicleSeatLine(models.Model):
+	_name = 'travel.seat.line'
+	order_id = fields.Many2one('travel.order')
+	seat_list = fields.Many2one('travel.seat')
+	price = fields.Float('Price', related='seat_list.price')
+
+#	@api.model
+#	def create(self, vals):
+#		vals['price'] = self.seat_list.price
+#		return super(VehicleSeatLine, self).create(vals)
+#
+#	@api.model
+#	def write(self, vals):
+#		vals['price'] = self.seat_list.price
+#		return super(VehicleSeatLine, self).write(vals)
+
 class VehicleSeat(models.Model):
 	_name = 'travel.seat'
-#	_sql_constraints = [('travel_seat_unique', 'UNIQUE (number_seat)', 'Seat have been booked')]
+	_sql_constraints = [('travel_seat_unique', 'UNIQUE (number_seat)', 'Seat have been created')]
+	name = fields.Char(compute="_compute_seat_name", store=False)
 	schedule_id = fields.Many2one('travel.schedule', string="Schedule", ondelete='cascade')
-	order_id = fields.Many2one('travel.order')
 	seat_number = fields.Integer('Seat Number')
 	price = fields.Float('Price')
-
-	def is_booked(self):
-		return self.order_id == None
-
-#class Vehicle(models.Model):
-#	_inherit = 'fleet.vehicle'
-
-#	schedule_id = fields.Many2one('travel.schedule')
+	
+	@api.multi
+	def _compute_seat_name(self):
+		for record in self:
+			record.name = "Seat %d | Rp%.2f" % (record.seat_number, record.price)

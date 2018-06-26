@@ -6,8 +6,6 @@
 		<field name="arch" type="xml">
 			<form string="Travel">
 				<header>
-					<button name="%(action_report)d" string="Print" type="action" class="oe_highlight"
-					attrs="{'invisible': [('state','!=','travel')]}"/>
 					<button type="object" name="confirm" string="Confirm Order"
 					attrs="{'invisible': [('state','!=','order')]}"/>
 					<button type="object" name="cancel" string="Cancel"/>
@@ -39,8 +37,7 @@
 						<page name="seat_number_list" string="Seat Number">
 							<field name="tree_seat_number" nolabel="1" colspan="1" attrs="{'readonly': [('state', '=', 'travel')]}">
 								<tree string="Tree String" editable="bottom">
-									<field name="seat_number"/>
-									<field name="price" attrs="{'readonly': [('state', '=', 'travel'), ('state','=','waiting')]}"/>
+									<field name="seat_list"/>
 								</tree>
 							</field>
 						</page>
