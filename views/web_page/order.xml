@@ -78,7 +78,7 @@
 												<td>
 													<ul class="list-inline">
 														<t t-foreach="travel.tree_seat_number" t-as="seat">
-															<li><t t-esc="seat.seat_list.seat_number"/> | </li>
+															<li>| Seat <t t-esc="seat.seat_list.seat_number"/></li>
 														</t>
 													</ul>
 												</td>

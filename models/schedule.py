@@ -45,6 +45,7 @@ class PoolLine(models.Model):
 
 class VehicleSeatLine(models.Model):
 	_name = 'travel.seat.line'
+	_sql_constraints = [('travel_seat_line_unique', 'UNIQUE (seat_list)', 'Seat have been booked')]
 	order_id = fields.Many2one('travel.order')
 	seat_list = fields.Many2one('travel.seat')
 	price = fields.Float('Price', related='seat_list.price')
