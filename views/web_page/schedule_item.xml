@@ -138,16 +138,24 @@
 									<div class="form-inline col-md-8 col-md-offset-2 center-block">
 									
 										<div class="form-group col-md-6">
-											<label for="seats">Seats</label>
+											<a>Seats</a><br/>
 								
-											<select multiple="multiple" id="seats" class="form-control" name="seats">
-												<t t-foreach="schedule.seat_list" t-as="seat_item">
-													<option t-att-value="seat_item.id">
-														<t t-esc="seat_item.name" />
-													</option>
+											<t t-foreach="schedule.seat_list" t-as="seat_item">
+												<t t-if="not seat_item.seat_line.order_id">
+													<label class="checkbox-inline">
+														<input type="checkbox" name="seats[]" t-att-value="seat_item.id">
+															<t t-esc="seat_item.name" />  
+														</input>
+													</label>
 												</t>
-											</select>
-										
+												<t t-if="seat_item.seat_line.order_id">
+													<label class="checkbox-inline">
+														<input type="checkbox" name="seats[]" t-att-value="seat_item.id" disabled="disabled">
+															<t t-esc="seat_item.name" /> ( Sold )
+														</input>
+													</label>
+												</t>
+											</t>		
 										</div>
 										
 										<div class="col-md-6 text-center">

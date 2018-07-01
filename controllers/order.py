@@ -53,8 +53,10 @@ class Order(http.Controller) :
 			_cr.autocommit(False)
 
 			order = travel_order.create(data_order)
+			
+			seats = request.httprequest.form.getlist('seats[]')
 
-			for seat in kw['seats']:
+			for seat in seats:
 				data = {'order_id' : order.id, 'seat_list' : seat}
 				seat_line = request.env['travel.seat.line']
 				

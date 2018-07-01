@@ -50,6 +50,8 @@ class VehicleSeatLine(models.Model):
 	seat_list = fields.Many2one('travel.seat')
 	price = fields.Float('Price', related='seat_list.price')
 
+	def isBooked(self):
+		return self.order_id is not None 
 #	@api.model
 #	def create(self, vals):
 #		vals['price'] = self.seat_list.price
@@ -65,6 +67,7 @@ class VehicleSeat(models.Model):
 	_sql_constraints = [('travel_seat_unique', 'UNIQUE (number_seat)', 'Seat have been created')]
 	name = fields.Char(compute="_compute_seat_name", store=False)
 	schedule_id = fields.Many2one('travel.schedule', string="Schedule", ondelete='cascade')
+	seat_line = fields.One2many('travel.seat.line', 'seat_list')
 	seat_number = fields.Integer('Seat Number')
 	price = fields.Float('Price')
 	
