@@ -1,7 +1,8 @@
 {
 	'name': 'Travel',
 	'description': 'Travel',
-	'author': 'Kelompok A1',
+	'author': 'Team A1',
+	'summary': "Manage travel vehicles, pool, and payment order",
 	'depends': ['base','website','fleet', 'website_form'],
 	'application': True,
 	'data': ['views/odoo_page/travel_view.xml',
