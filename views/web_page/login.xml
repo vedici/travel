@@ -3,7 +3,7 @@
 	<data>
 
 		<!-- Halaman Login -->
-		<template id="login">
+		<template id="login" page="True">
 			<t t-call="website.layout">
                 <t t-set="title">Travel</t>
                 <div class="oe_structure">

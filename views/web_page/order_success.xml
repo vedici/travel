@@ -3,7 +3,7 @@
 	<data>
 
 		<!-- Halaman Message -->
-		<template id="order_success">
+		<template id="order_success" page="True">
 			<t t-call="website.layout">
                 <div class="oe_structure">
 					<div class="container">

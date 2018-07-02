@@ -29,10 +29,10 @@ class TravelOrder(models.Model):
 	@api.model
 	def create(self, vals):
 
-		vals['price_travel'] = 0
+		vals['price_travel'] = sum(seat_line.price for seat_line in self.tree_seat_number)
 		
-		for seat_line in self.tree_seat_number:
-			vals['price_travel'] += seat_line.price
+#		for seat_line in self.tree_seat_number:
+#			vals['price_travel'] += seat_line.price
 	
 		if vals.get('name', _('New')) == _('New'):
 			vals['name'] = self.env['ir.sequence'].next_by_code('travel.order') or _('New')
@@ -41,10 +41,10 @@ class TravelOrder(models.Model):
 
 	@api.model
 	def write(self, vals):
-		vals['price_travel'] = 0
+		vals['price_travel'] = sum(seat_line.price for seat_line in self.tree_seat_number)
 
-		for seat_line in self.tree_seat_number:
-			vals['price_travel'] += seat_line.price
+#		for seat_line in self.tree_seat_number:
+#			vals['price_travel'] += seat_line.price
 
 		return super(TravelOrder, self).write(vals)
 
