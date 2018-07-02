@@ -1,10 +1,10 @@
 <odoo>
 	<data>
 		<record id="travel_user_rule" model="ir.rule">
-			<field name="name">Travel Order only for User</field>
+			<field name="name">Travel Order bebas</field>
 			<field name="model_id" ref="model_travel_order"/>
 			<field name="domain_force">
-				[('create_uid','=',user.id)]
+				[(1,'=',1)]
 			</field>
 			<field name="groups" eval="
 				[(4,ref('base.group_user'))]"/>
