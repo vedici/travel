@@ -5,11 +5,11 @@
 		<template id="report_template" >
 			<t t-call="report.html_container">
 				<t t-if="o and 'company_id' in o">
-		      <t t-set="company" t-value="o.company_id"></t>
-		    </t>
-		    <t t-if="not o or not 'company_id' in o">
-		      <t t-set="company" t-value="res_company"></t>
-		   	</t>
+					<t t-set="company" t-value="o.company_id"></t>
+				</t>
+				<t t-if="not o or not 'company_id' in o">
+					<t t-set="company" t-value="res_company"></t>
+				</t>
 				<div class="header">
 					<div class="row">
 						<div class="col-xs-6">
@@ -28,11 +28,11 @@
 				<t t-foreach="docs" t-as="doc">
 					<t t-call="report.external_layout">
 						<div class="page">
-	            <div class="oe_structure"/>
+							<div class="oe_structure"/>
 							<div class="row">
 								<div class="col-xs-6" style="font-size: 15px !important;" >
 									<p>
-									  Departure : <span t-field="doc.departure"/><br/>
+										Departure : <span t-field="doc.departure"/><br/>
 										Destination : <span t-field="doc.destination"/><br/>
 										Car Type : <span t-field="doc.departure.schedule.vehicle"/>
 									</p>
@@ -47,9 +47,10 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-12" style="font-size: 15px !important;" >
-									Seat Number : <span t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_number"/>, </span>
+									Seat Number : <span t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_list.seat_number"/>, </span>
 								</div>
 							</div>
+							<div class="oe_structure"/>
 						</div>
 					</t>
 				</t>

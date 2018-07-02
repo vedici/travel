@@ -52,7 +52,7 @@
 												</td>
 												<td>
 													<a t-attf-href="/travel/schedule/{{slug(schedule)}}">
-														<button class="btn btn-default">
+														<button class="btn btn-success">
 														Order
 														</button>
 													</a>
