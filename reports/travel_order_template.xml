@@ -41,13 +41,14 @@
 									<p>
 										Departure Date : <span t-field="doc.departure_date"/><br/>
 										Departure Time : <span t-field="doc.departure_time"/><br/>
-										Price : <span t-field="doc.price_travel"/><br/>
+										Total Price : Rp <span t-field="doc.price_travel"/><br/>
 									</p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-12" style="font-size: 15px !important;" >
-									Seat Number : <span t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_list.seat_number"/>, </span>
+									Seat Number : <br/>
+									<span t-foreach="doc.tree_seat_number" t-as="i"><t t-esc="i.seat_list.seat_number"/> : Rp <t t-esc="i.seat_list.price"/>, <br/></span>
 								</div>
 							</div>
 							<div class="oe_structure"/>
