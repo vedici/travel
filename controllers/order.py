@@ -45,10 +45,11 @@ class Order(http.Controller) :
 		data_order['departure_date'] = schedule.departure_date
 		data_order['departure_time'] = request.env['travel.pool.line'].browse(data_order['departure']).departure_perpool
 		data_order['destination'] = int(kw['destination'])
+		data_order['state'] = 'waiting'
 
 		travel_order = request.env['travel.order']
 		_cr = travel_order.get_cr()
-	
+		
 		try:	
 			_cr.autocommit(False)
 
@@ -69,15 +70,16 @@ class Order(http.Controller) :
 
 			_cr.commit()
 
+			return request.render('travel.order_success', {
+				'title': 'Order Success!',
+				'message': 'Please Pay Your Invoice',
+				'order': travel_order
+			})
+
 		except ValidationError, e:
 			_cr.rollback()
 			
 			return request.render('travel.order_success', {
 				'title': 'Order Failed!',
-				'message': e.args[0]
+				'message': e
 			})
-
-		return request.render('travel.order_success', {
-			'title': 'Order Success!',
-			'message': 'Please Pay Your Invoice'
-		})

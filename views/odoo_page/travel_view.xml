@@ -16,7 +16,8 @@
 				<sheet>
 					<group name="group_top">
 						<h1 groups="base.group_user" colspan="4" attrs="{'invisible': [('state','!=','waiting')]}">Price: <field name="price_travel" attrs="{'invisible': [('state','!=','waiting')],'readonly': [('state', '=', 'travel')]}"/>
-						Please pay before the specified date !</h1>
+							Please pay before the specified date ! Transfer to 037 701 000 435 301
+						</h1>
 						<group name="group_left">
 							<h1 attrs="{'invisible': [('state','=','waiting')]}">
 								<field name="name" readonly="1"/>
