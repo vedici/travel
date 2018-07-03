@@ -9,7 +9,7 @@
 					<div class="container">
 						<h1><t t-esc="title"/></h1>
 						<p><t t-esc="message"/></p>
-						<p>Transfer <t t-esc="'Rp{:,.2f}'.format(order.price_travel)"/> to 037 701 000 435 301</p>
+						<p>Transfer to 037 701 000 435 301</p>
 					</div>
                 </div>
             </t>
